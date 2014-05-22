@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:id="@+id/person_item_name"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alice Peisch"/>
+        <TextView
+            android:id="@+id/person_item_title"
+            android:textSize="13dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Democratic Representative"/>
+        <TextView
+            android:id="@+id/person_item_district"
+            android:textSize="13dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fourteenth Norfolk"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/person_item_image"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:src="@drawable/placeholder"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+
+</LinearLayout>
