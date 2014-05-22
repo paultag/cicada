@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent_color_light">#D7E3DF</color>
+    <color name="accent_color_light_alt">#E6EDE6</color>
+
+    <color name="accent_callout">#C7CC18</color>
+    <color name="accent_background">#F7F7F2</color>
+
+    <color name="accent_highlight">#CA5703</color>
+    <color name="selection">#7C8D00</color>
+
+    <color name="background_dark">#F4F3EF</color>
+    <color name="foreground_dark">#635f5c</color>
+
+    <color name="background_light">#FEFEFE</color>
+    <color name="foreground_light">#635f5c</color>
+</resources>
