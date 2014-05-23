@@ -1,5 +1,13 @@
 package org.opencivicdata.android.opencivicdata.adaptors;
 
+/*
+ * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions of the BSD-3 license in
+ * the LICENSE file contained in this source distribution.
+ *
+ * Contributors:
+ * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
+ */
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +17,9 @@ import android.widget.LinearLayout;
 
 import org.opencivicdata.android.opencivicdata.R;
 
-
+/**
+ * PersonAdaptor
+ */
 public class PersonAdaptor extends BaseAdapter {
     Context context;
 
@@ -37,7 +47,8 @@ public class PersonAdaptor extends BaseAdapter {
         LinearLayout layout;
 
         if (view == null) {
-            layout = (LinearLayout) LayoutInflater.from(this.context).inflate(R.layout.person_item, null);
+            layout = (LinearLayout) LayoutInflater.from(this.context).inflate(
+		            R.layout.person_item, null);
         } else {
             layout = (LinearLayout) view;
         }

@@ -1,4 +1,11 @@
 package org.opencivicdata.android.opencivicdata.fragments;
+/*
+ * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions of the BSD-3 license in
+ * the LICENSE file contained in this source distribution.
+ *
+ * Contributors:
+ * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
+ */
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -10,14 +17,13 @@ import android.widget.ListView;
 import org.opencivicdata.android.opencivicdata.R;
 import org.opencivicdata.android.opencivicdata.adaptors.OrganizationAdaptor;
 
+
 /**
- * This file is a part of Open Civic Data.
- * <p/>
- * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions of the BSD-3 license in
- * the LICENSE file contained in this source distribution.
- * <p/>
- * Contributors:
- * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
+ * OrganizationListFragment is the simple fragment to handle listing Organizations. Yes,
+ * I know that's entirely unhelpful, but that's what it does, and that's how it does it.
+ *
+ * Bundle arguments I know about:
+ *   - (none)
  */
 public class OrganizationListFragment extends Fragment {
     @Override

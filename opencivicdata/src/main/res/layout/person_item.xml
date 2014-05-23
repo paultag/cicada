@@ -28,6 +28,7 @@
         <TextView
             android:id="@+id/person_item_district"
             android:textSize="13dp"
+            android:textColor="@color/sunlight_text_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Fourteenth Norfolk"/>

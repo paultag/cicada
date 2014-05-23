@@ -1,27 +1,27 @@
-package org.opencivicdata.android.opencivicdata.listener;
+package org.opencivicdata.android.opencivicdata.support;
 
-import android.support.v4.app.Fragment;
+/*
+ * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions of the BSD-3 license in
+ * the LICENSE file contained in this source distribution.
+ *
+ * Contributors:
+ * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
+ */
+
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 
-import org.opencivicdata.android.opencivicdata.R;
 
 /**
- * This file is a part of Open Civic Data.
- * <p/>
- * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions of the BSD-3 license in
- * the LICENSE file contained in this source distribution.
- * <p/>
- * Contributors:
- * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
+ * GenericTabListener
  */
 public class GenericTabListener implements ActionBar.TabListener {
 
     ViewPager viewPager;
 
     public GenericTabListener(ViewPager viewPager) {
-        this.viewPager = viewPager;
+	    this.viewPager = viewPager;
     }
 
     @Override
