@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="SunlightActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">@color/background_dark</item>
         <item name="android:textColor">@color/foreground_dark</item>
     </style>
 
-    <style name="SunlightTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="SunlightTheme" parent="Theme.AppCompat.Light">
         <item name="android:actionBarStyle">@style/SunlightActionBar</item>
         <item name="android:listViewStyle">@style/SunlightList</item>
+        <item name="android:actionBarTabStyle">@style/SunlightActionBarTab</item>
 
         <item name="android:windowBackground">@color/background_light</item>
         <item name="android:colorBackground">@color/background_light</item>
@@ -19,5 +19,11 @@
 
     <style name="SunlightList" parent="@android:style/Widget.Holo.Light.ListView">
         <!-- Set up the Selector and stuff to match Sunlight branding -->
+    </style>
+
+    <style name="SunlightActionBarTab" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
+        <item name="android:background">@drawable/abc_tab_indicator_ab_holo</item>
+        <!-- Replace that selector with a more Sunlightey one -->
+        <item name="android:textColor">@color/foreground_dark</item>
     </style>
 </resources>
