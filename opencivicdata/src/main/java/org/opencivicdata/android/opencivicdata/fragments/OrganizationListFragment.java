@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import org.opencivicdata.android.opencivicdata.R;
-import org.opencivicdata.android.opencivicdata.adaptors.PersonAdaptor;
+import org.opencivicdata.android.opencivicdata.adaptors.OrganizationAdaptor;
 
 /**
  * This file is a part of Open Civic Data.
@@ -19,8 +19,7 @@ import org.opencivicdata.android.opencivicdata.adaptors.PersonAdaptor;
  * Contributors:
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
-
-public class PersonListFragment extends Fragment {
+public class OrganizationListFragment extends Fragment {
     @Override
     public View onCreateView(
             LayoutInflater inflater,
@@ -28,7 +27,7 @@ public class PersonListFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         ListView lv = (ListView) inflater.inflate(R.layout.list, container, false);
-        lv.setAdapter(new PersonAdaptor(this.getActivity()));
+        lv.setAdapter(new OrganizationAdaptor(this.getActivity()));
         return lv;
     }
 }
