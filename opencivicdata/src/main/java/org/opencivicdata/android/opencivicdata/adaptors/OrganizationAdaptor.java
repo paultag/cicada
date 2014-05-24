@@ -12,30 +12,19 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 
 import org.opencivicdata.android.opencivicdata.R;
+import org.opencivicdata.android.opencivicdata.models.Organization;
 
 /**
  * OrganizationAdaptor
  */
-public class OrganizationAdaptor extends BaseAdapter {
-
-    Context context;
+public class OrganizationAdaptor extends GenericListAdaptor<Organization> {
 
     public OrganizationAdaptor(Context context) {
-        this.context = context;
+        super(context);
     }
-
-    @Override
-    public int getCount() {return 20;}
-
-    @Override
-    public Object getItem(int i) {return null;}
-
-    @Override
-    public long getItemId(int i) {return 0;}
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
@@ -47,7 +36,6 @@ public class OrganizationAdaptor extends BaseAdapter {
         } else {
             layout = (LinearLayout) view;
         }
-        /* Set imageView and friends */
 
         return layout;
     }

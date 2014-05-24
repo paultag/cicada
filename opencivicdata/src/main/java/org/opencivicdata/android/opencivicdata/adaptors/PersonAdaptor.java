@@ -12,39 +12,24 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import org.opencivicdata.android.opencivicdata.R;
+import org.opencivicdata.android.opencivicdata.dao.OrganizationDAO;
+import org.opencivicdata.android.opencivicdata.dao.api.OrganizationAPIDAO;
 import org.opencivicdata.android.opencivicdata.models.Person;
+import org.opencivicdata.android.opencivicdata.tasks.GenericListPopulator;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.Callable;
 
 /**
  * PersonAdaptor
  */
-public class PersonAdaptor extends BaseAdapter {
-    protected Context context;
+public class PersonAdaptor extends GenericListAdaptor<Person> {
 
     public PersonAdaptor(Context context) {
-        this.context = context;
-    }
-
-    @Override
-    public int getCount() {
-        return 20;
-    }
-
-    @Override
-    public Object getItem(int i) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int i) {
-        return -1;
+        super(context);
     }
 
     @Override

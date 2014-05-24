@@ -66,14 +66,16 @@ public class APIBase {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("?api_key=" + APIBase.apiKey);
 
-        for (Map.Entry<String, String> i : params.entrySet()) {
-            stringBuilder.append("&");
-            stringBuilder.append(URLEncoder.encode(i.getKey(), "UTF-8"));
-            stringBuilder.append("=");
-            stringBuilder.append(URLEncoder.encode(i.getValue(), "UTF-8"));
+        if (params != null) {
+            for (Map.Entry<String, String> i : params.entrySet()) {
+                stringBuilder.append("&");
+                stringBuilder.append(URLEncoder.encode(i.getKey(), "UTF-8"));
+                stringBuilder.append("=");
+                stringBuilder.append(URLEncoder.encode(i.getValue(), "UTF-8"));
+            }
         }
 
-        return APIBase.host + "/" + method + "?apikey=" + APIBase.apiKey + stringBuilder.toString();
+        return APIBase.host + "/" + method + stringBuilder.toString();
     }
 
     protected JSONObject getJSONObject(String url) throws IOException, JSONException {

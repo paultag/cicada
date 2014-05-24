@@ -1,9 +1,13 @@
 package org.opencivicdata.android.opencivicdata.dao.api;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.opencivicdata.android.opencivicdata.dao.PersonDAO;
 import org.opencivicdata.android.opencivicdata.dao.api.iterators.PersonAPIIterator;
+import org.opencivicdata.android.opencivicdata.models.Organization;
 import org.opencivicdata.android.opencivicdata.models.Person;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -17,21 +21,30 @@ import java.util.Iterator;
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
 public class PersonAPIDAO extends APIBase implements PersonDAO {
-    public PersonAPIDAO() {
 
+    public static Person createPerson(JSONObject jsonPerson) throws JSONException {
+        Person person = new Person();
+        person.setOpenCivicId(jsonPerson.getString("id"));
+        person.setName(jsonPerson.getString("name"));
+        return person;
     }
 
     @Override
     public Person getPerson(String openCivicDataID) {
-        return null;
+        JSONObject jsonPerson = null;
+        try {
+            jsonPerson = this.getObjectFor(openCivicDataID, null, null);
+            return PersonAPIDAO.createPerson(jsonPerson);
+        } catch (IOException e) {
+            return null;
+        } catch (JSONException e) {
+            return null;
+        }
     }
 
     @Override
-    public Iterator<Person> getPeopleByJurisdiction(String jurisdictionId) {
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("jurisdiction_id", jurisdictionId);
-
-        PersonAPIIterator personAPIIterator = new PersonAPIIterator("people", null, params);
-        return personAPIIterator;
+    public Iterator<Organization> getOrganizations(String personOpenCivicId) {
+        throw new IllegalStateException();
     }
+
 }

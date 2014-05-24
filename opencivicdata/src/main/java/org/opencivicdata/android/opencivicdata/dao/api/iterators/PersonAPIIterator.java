@@ -2,6 +2,7 @@ package org.opencivicdata.android.opencivicdata.dao.api.iterators;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.opencivicdata.android.opencivicdata.dao.api.PersonAPIDAO;
 import org.opencivicdata.android.opencivicdata.models.Person;
 
 import java.util.Iterator;
@@ -31,17 +32,12 @@ public class PersonAPIIterator implements Iterator<Person> {
 
     @Override
     public Person next() {
-        Person person = new Person();
         JSONObject jsonPerson = this.genericAPIIterator.next();
-
         try {
-            person.setOpenCivicId(jsonPerson.getString("id"));
-            person.setName(jsonPerson.getString("name"));
+            return PersonAPIDAO.createPerson(jsonPerson);
         } catch (JSONException e) {
-            throw new IllegalStateException("WTFJSON");
+            throw new RuntimeException();
         }
-
-        return person;
     }
 
     @Override

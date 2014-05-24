@@ -16,7 +16,8 @@ import java.util.Iterator;
  * Contributors:
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
-public interface PersonDAO {
-    public Person getPerson(String openCivicDataID);
-    public Iterator<Organization> getOrganizations(String personOpenCivicId);
+public interface OrganizationDAO {
+    public Organization getOrganization(String openCivicDataId);
+    public Iterator<Organization> getOrganizationsByJurisdiction(String jurisdictionId);
+    public Iterator<Person> getMembers(String openCivicDataId);
 }

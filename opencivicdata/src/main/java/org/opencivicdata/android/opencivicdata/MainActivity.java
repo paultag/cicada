@@ -22,11 +22,8 @@ import org.opencivicdata.android.opencivicdata.support.GenericActionBarActivity;
 public class MainActivity extends GenericActionBarActivity {
 	@Override
 	public void addTabs() {
-        Bundle bundle = new Bundle();
-        bundle.putString("jurisdiction", "ocd-jurisdiction/country:us/state:oh/legislature");
-
-        this.addTab(bundle, new PersonListFragment(), "People");
-		this.addTab(bundle, new OrganizationListFragment(), "Organizations");
-		this.addTab(bundle, new PersonListFragment(), "People Two");
+        this.addTab(new PersonListFragment(), "People");
+		this.addTab(new OrganizationListFragment(), "Organizations");
+		this.addTab(new PersonListFragment(), "People Two");
 	}
 }

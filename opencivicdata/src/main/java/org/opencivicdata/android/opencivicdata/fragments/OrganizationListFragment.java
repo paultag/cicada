@@ -35,6 +35,7 @@ public class OrganizationListFragment extends Fragment {
         Bundle bundle = this.getArguments();
 
         ListView lv = (ListView) inflater.inflate(R.layout.list, container, false);
+        // lv.setEmptyView(inflater.inflate(R.layout.empty, container, false));
         lv.setAdapter(new OrganizationAdaptor(this.getActivity()));
         return lv;
     }
