@@ -8,10 +8,10 @@ import android.support.v7.app.ActionBarActivity;
 
 import org.opencivicdata.android.opencivicdata.R;
 
-public abstract class GenericActionBarActivity extends ActionBarActivity {
+public abstract class TabbedActionBarActivity extends ActionBarActivity {
 
 	protected GenericTabListener genericTabListener;
-	protected GenericViewPager genericViewPager;
+	protected FragmentViewPager fragmentViewPager;
 	protected ActionBar actionBar;
 
 	/**
@@ -21,14 +21,14 @@ public abstract class GenericActionBarActivity extends ActionBarActivity {
 
 	protected void addTab(Fragment fragment, String tabName) {
 		if (
-			this.genericViewPager == null ||
+			this.fragmentViewPager == null ||
 			this.actionBar == null ||
 		    this.genericTabListener == null
 		) {
 			throw new IllegalStateException("Attempted to addTab before onCreate");
 		}
 
-		this.genericViewPager.addFragment(fragment);
+		this.fragmentViewPager.addFragment(fragment);
 		ActionBar.Tab tab = this.actionBar.newTab().setText(tabName);
 		tab.setTabListener(this.genericTabListener);
 		this.actionBar.addTab(tab);
@@ -52,8 +52,8 @@ public abstract class GenericActionBarActivity extends ActionBarActivity {
 		);
 
 		/* Great. Now, let's add a Generic fragment adapter */
-		this.genericViewPager = new GenericViewPager(this.getSupportFragmentManager());
-		viewPager.setAdapter(this.genericViewPager);
+		this.fragmentViewPager = new FragmentViewPager(this.getSupportFragmentManager());
+		viewPager.setAdapter(this.fragmentViewPager);
 
 		/* And a listener to do the paging */
 		GenericTabListener genericTabListener = new GenericTabListener(viewPager);

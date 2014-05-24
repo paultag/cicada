@@ -7,10 +7,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 
 
-public class GenericViewPager extends FragmentPagerAdapter {
+public class FragmentViewPager extends FragmentPagerAdapter {
 	protected ArrayList<Fragment> fragments;
 
-	public GenericViewPager(FragmentManager fm) {
+	public FragmentViewPager(FragmentManager fm) {
 		super(fm);
 		this.fragments = new ArrayList<Fragment>();
 	}

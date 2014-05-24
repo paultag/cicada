@@ -8,19 +8,17 @@ package org.opencivicdata.android.opencivicdata;
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
 
-import android.os.Bundle;
-
 import org.opencivicdata.android.opencivicdata.dao.api.APIBase;
 import org.opencivicdata.android.opencivicdata.fragments.OrganizationListFragment;
 import org.opencivicdata.android.opencivicdata.fragments.PersonListFragment;
-import org.opencivicdata.android.opencivicdata.support.GenericActionBarActivity;
+import org.opencivicdata.android.opencivicdata.support.TabbedActionBarActivity;
 
 /**
  * MainActivity is the main entrypoint to the application, the default home
  * view. This activity is basially just a tabbed view composed of a few
  * Fragments.
  */
-public class MainActivity extends GenericActionBarActivity {
+public class MainActivity extends TabbedActionBarActivity {
 	@Override
 	public void addTabs() {
         APIBase.setApiKey("");
