@@ -14,14 +14,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import org.opencivicdata.android.opencivicdata.R;
+import org.opencivicdata.android.opencivicdata.models.Person;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * PersonAdaptor
  */
 public class PersonAdaptor extends BaseAdapter {
-    Context context;
+    protected Context context;
 
     public PersonAdaptor(Context context) {
         this.context = context;
@@ -39,7 +44,7 @@ public class PersonAdaptor extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return -1;
     }
 
     @Override

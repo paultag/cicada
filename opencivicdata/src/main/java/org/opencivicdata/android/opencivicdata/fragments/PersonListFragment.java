@@ -16,6 +16,11 @@ import android.widget.ListView;
 
 import org.opencivicdata.android.opencivicdata.R;
 import org.opencivicdata.android.opencivicdata.adaptors.PersonAdaptor;
+import org.opencivicdata.android.opencivicdata.dao.PersonDAO;
+import org.opencivicdata.android.opencivicdata.dao.api.PersonAPIDAO;
+import org.opencivicdata.android.opencivicdata.models.Person;
+
+import java.util.Iterator;
 
 /**
  * OrganizationListFragment is the simple fragment to handle listing Organizations. Yes,
@@ -31,6 +36,7 @@ public class PersonListFragment extends Fragment {
             ViewGroup container,
             Bundle savedInstanceState
     ) {
+        Bundle bundle = this.getArguments();
         ListView lv = (ListView) inflater.inflate(R.layout.list, container, false);
         lv.setAdapter(new PersonAdaptor(this.getActivity()));
         return lv;

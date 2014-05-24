@@ -19,7 +19,7 @@ public abstract class GenericActionBarActivity extends ActionBarActivity {
 	 */
 	public abstract void addTabs();
 
-	protected void addTab(Fragment fragment, String tabName) {
+	protected void addTab(Bundle bundle, Fragment fragment, String tabName) {
 		if (
 			this.genericViewPager == null ||
 			this.actionBar == null ||
@@ -27,6 +27,10 @@ public abstract class GenericActionBarActivity extends ActionBarActivity {
 		) {
 			throw new RuntimeException("Attempted to addTab before onCreate");
 		}
+
+        if (bundle != null) {
+            fragment.setArguments(bundle);
+        }
 
 		this.genericViewPager.addFragment(fragment);
 		ActionBar.Tab tab = this.actionBar.newTab().setText(tabName);
