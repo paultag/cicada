@@ -1,5 +1,7 @@
 package org.opencivicdata.android.opencivicdata.dao.api;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,8 +38,10 @@ public class OrganizationAPIDAO extends APIBase implements OrganizationDAO {
             jsonOrganization = this.getObjectFor(openCivicDataId, null, null);
             return OrganizationAPIDAO.createOrganization(jsonOrganization);
         } catch (IOException e) {
+            Log.w("PAUL", e.toString());
             return null;
         } catch (JSONException e) {
+            Log.w("PAUL", e.toString());
             return null;
         }
     }
@@ -52,12 +56,19 @@ public class OrganizationAPIDAO extends APIBase implements OrganizationDAO {
         ArrayList<Person> arrayList = new ArrayList<Person>();
         JSONArray memberships;
 
+        Log.w("PAUL", "Loading memberships");
+
         try {
+            Log.w("PAUL", "Loading object");
             JSONObject jsonOrganization = this.getObjectFor(openCivicDataId, null, null);
+            Log.w("PAUL", "JSONing");
             memberships = jsonOrganization.getJSONArray("memberships");
+            Log.w("PAUL", "Got Memberships");
         } catch (IOException e) {
+            Log.w("PAUL", e.toString());
             return null;
         } catch (JSONException e) {
+            Log.w("PAUL", e.toString());
             return null;
         }
 
@@ -69,9 +80,11 @@ public class OrganizationAPIDAO extends APIBase implements OrganizationDAO {
                     arrayList.add(PersonAPIDAO.createPerson(jsonPerson));
                 }
             } catch (JSONException e) {
+                Log.w("PAUL", e.toString());
                 /* TODO Error handle */
             }
         }
+        Log.w("PAUL", "Loaded.");
 
         return arrayList.iterator();
     }

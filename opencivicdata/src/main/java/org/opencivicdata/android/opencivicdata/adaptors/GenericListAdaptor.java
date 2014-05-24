@@ -28,6 +28,7 @@ abstract public class GenericListAdaptor<E> extends BaseAdapter {
 
     public void add(E object) {
         this.arrayList.add(object);
+        this.notifyDataSetChanged();
     }
 
     @Override

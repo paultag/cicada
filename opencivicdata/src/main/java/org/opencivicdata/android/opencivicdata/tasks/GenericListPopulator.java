@@ -2,6 +2,9 @@ package org.opencivicdata.android.opencivicdata.tasks;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
 
 import org.opencivicdata.android.opencivicdata.adaptors.GenericListAdaptor;
 import org.opencivicdata.android.opencivicdata.dao.api.iterators.GenericAPIIterator;
@@ -26,6 +29,8 @@ public class GenericListPopulator<E> extends AsyncTask<Callable<Iterator<E>>, E,
         this.adaptor = adaptor;
     }
 
+
+
     @Override
     protected Void doInBackground(Callable<Iterator<E>>... callables) {
         Log.i("PAUL", "Doing in Background");
@@ -33,17 +38,26 @@ public class GenericListPopulator<E> extends AsyncTask<Callable<Iterator<E>>, E,
             Iterator<E> results = null;
             try {
                 results = callable.call();
-            } catch (Exception e) {}
+            } catch (Exception e) {
+                Log.e("PAUL", e.toString());
+            }
             if (results != null) {
                 while (results.hasNext()) {
                     E obj = results.next();
-                    this.adaptor.add(obj);
-                    Log.i("PAUL", " -> new");
+                    this.publishProgress(obj);
                 }
-                this.adaptor.notifyDataSetChanged();
                 Log.i("PAUL", " -> told updated");
+            } else {
+                Log.w("PAUL", "Crap, got a null response");
             }
         }
         return (null);
+    }
+
+    @Override
+    protected void onProgressUpdate(E... items) {
+        for (E e : items) {
+            this.adaptor.add(e);
+        }
     }
 }

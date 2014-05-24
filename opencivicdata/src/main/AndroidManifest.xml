@@ -2,11 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.opencivicdata.android.opencivicdata" >
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/SunlightTheme" >
+
         <activity
             android:name="org.opencivicdata.android.opencivicdata.MainActivity"
             android:label="@string/app_name" >

@@ -10,6 +10,7 @@ package org.opencivicdata.android.opencivicdata;
 
 import android.os.Bundle;
 
+import org.opencivicdata.android.opencivicdata.dao.api.APIBase;
 import org.opencivicdata.android.opencivicdata.fragments.OrganizationListFragment;
 import org.opencivicdata.android.opencivicdata.fragments.PersonListFragment;
 import org.opencivicdata.android.opencivicdata.support.GenericActionBarActivity;
@@ -22,6 +23,9 @@ import org.opencivicdata.android.opencivicdata.support.GenericActionBarActivity;
 public class MainActivity extends GenericActionBarActivity {
 	@Override
 	public void addTabs() {
+        APIBase.setApiKey("");
+        APIBase.setApiHost("http://api.opencivicdata.org");
+
         this.addTab(new PersonListFragment(), "People");
 		this.addTab(new OrganizationListFragment(), "Organizations");
 		this.addTab(new PersonListFragment(), "People Two");

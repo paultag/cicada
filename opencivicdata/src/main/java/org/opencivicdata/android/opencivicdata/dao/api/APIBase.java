@@ -1,6 +1,7 @@
 package org.opencivicdata.android.opencivicdata.dao.api;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 
 import org.json.JSONException;
@@ -64,7 +65,7 @@ public class APIBase {
         }
 
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("?api_key=" + APIBase.apiKey);
+        stringBuilder.append("?apikey=" + APIBase.apiKey);
 
         if (params != null) {
             for (Map.Entry<String, String> i : params.entrySet()) {
@@ -75,14 +76,16 @@ public class APIBase {
             }
         }
 
-        return APIBase.host + "/" + method + stringBuilder.toString();
+        return APIBase.host + "/" + method + "/" + stringBuilder.toString();
     }
 
     protected JSONObject getJSONObject(String url) throws IOException, JSONException {
+        Log.d("PAUL", "Loading JSON Object: " + url);
         return new JSONObject(this.fetchJSON(url));
     }
 
     protected String fetchJSON(String requestedUrl) throws IOException {
+        Log.d("PAUL", "Hitting URL " + requestedUrl);
         URL url = new URL(requestedUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         /* TODO: Set connection headers (User-agent, etc) */

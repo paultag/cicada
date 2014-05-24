@@ -45,7 +45,6 @@ public class PersonListFragment extends Fragment {
         // lv.setEmptyView(inflater.inflate(R.layout.empty, container, false));
         lv.setAdapter(personAdaptor);
 
-
         GenericListPopulator<Person> glp = new GenericListPopulator<Person>(personAdaptor);
         final OrganizationDAO organizationDAO = new OrganizationAPIDAO();
         glp.execute(new Callable<Iterator<Person>>() {

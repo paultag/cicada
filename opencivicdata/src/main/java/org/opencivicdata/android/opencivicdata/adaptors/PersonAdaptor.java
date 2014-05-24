@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import org.opencivicdata.android.opencivicdata.R;
 import org.opencivicdata.android.opencivicdata.dao.OrganizationDAO;
@@ -42,7 +43,11 @@ public class PersonAdaptor extends GenericListAdaptor<Person> {
         } else {
             layout = (LinearLayout) view;
         }
+
         /* Set imageView and friends */
+        Person person = (Person) this.getItem(i);
+        TextView name = (TextView) layout.findViewById(R.id.person_item_name);
+        name.setText(person.getName());
 
         return layout;
     }
