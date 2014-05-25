@@ -11,7 +11,9 @@ import org.opencivicdata.android.opencivicdata.models.Person;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 /**
  * This file is a part of Open Civic Data.
@@ -48,7 +50,27 @@ public class OrganizationAPIDAO extends APIBase implements OrganizationDAO {
 
     @Override
     public Iterator<Organization> getOrganizationsByJurisdiction(String jurisdictionId) {
-        return null;
+        ArrayList<Organization> arrayList = new ArrayList<Organization>();
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("jurisdiction_id", jurisdictionId);
+
+        try {
+            JSONObject directory = this.getObjectFor("organizations", null, params);
+            JSONArray orgs = directory.getJSONArray("results");
+            for (int i = 0; i < orgs.length(); ++i) {
+                JSONObject org = orgs.getJSONObject(i);
+                Organization orga = OrganizationAPIDAO.createOrganization(org);
+                arrayList.add(orga);
+            }
+        } catch (IOException e) {
+            Log.w("PAUL", e.toString());
+            return null;
+        } catch (JSONException e) {
+            Log.w("PAUL", e.toString());
+            return null;
+        }
+
+        return arrayList.iterator();
     }
 
     @Override

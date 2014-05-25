@@ -9,6 +9,7 @@ package org.opencivicdata.android.opencivicdata.fragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,14 @@ import android.widget.ListView;
 
 import org.opencivicdata.android.opencivicdata.R;
 import org.opencivicdata.android.opencivicdata.adaptors.OrganizationAdaptor;
+import org.opencivicdata.android.opencivicdata.dao.OrganizationDAO;
+import org.opencivicdata.android.opencivicdata.dao.api.OrganizationAPIDAO;
+import org.opencivicdata.android.opencivicdata.models.Organization;
+import org.opencivicdata.android.opencivicdata.models.Person;
+import org.opencivicdata.android.opencivicdata.tasks.GenericListPopulator;
+
+import java.util.Iterator;
+import java.util.concurrent.Callable;
 
 
 /**
@@ -36,7 +45,22 @@ public class OrganizationListFragment extends Fragment {
 
         ListView lv = (ListView) inflater.inflate(R.layout.list, container, false);
         // lv.setEmptyView(inflater.inflate(R.layout.empty, container, false));
-        lv.setAdapter(new OrganizationAdaptor(this.getActivity()));
+        OrganizationAdaptor organizationAdaptor = new OrganizationAdaptor(this.getActivity());
+        lv.setAdapter(organizationAdaptor);
+
+        GenericListPopulator<Organization> glp = new GenericListPopulator<Organization>(
+                organizationAdaptor);
+
+        final OrganizationDAO organizationDAO = new OrganizationAPIDAO();
+        glp.execute(new Callable<Iterator<Organization>>() {
+            @Override
+            public Iterator<Organization> call() throws Exception {
+                Log.i("PAUL", "Getting orgs");
+                return organizationDAO.getOrganizationsByJurisdiction(
+                        "ocd-jurisdiction/country:us/state:ma/legislature");
+            }
+        });
+
         return lv;
     }
 }

@@ -13,9 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import org.opencivicdata.android.opencivicdata.R;
 import org.opencivicdata.android.opencivicdata.models.Organization;
+import org.opencivicdata.android.opencivicdata.models.Person;
 
 /**
  * OrganizationAdaptor
@@ -36,6 +38,11 @@ public class OrganizationAdaptor extends GenericListAdaptor<Organization> {
         } else {
             layout = (LinearLayout) view;
         }
+
+        /* Set imageView and friends */
+        Organization organization = (Organization) this.getItem(i);
+        TextView name = (TextView) layout.findViewById(R.id.organization_item_name);
+        name.setText(organization.getName());
 
         return layout;
     }
