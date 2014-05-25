@@ -9,6 +9,7 @@ package org.opencivicdata.android.opencivicdata.fragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +27,6 @@ import org.opencivicdata.android.opencivicdata.tasks.GenericListPopulator;
 import java.util.Iterator;
 import java.util.concurrent.Callable;
 
-
 /**
  * OrganizationListFragment is the simple fragment to handle listing Organizations. Yes,
  * I know that's entirely unhelpful, but that's what it does, and that's how it does it.
@@ -34,17 +34,15 @@ import java.util.concurrent.Callable;
  * Bundle arguments I know about:
  *   - (none)
  */
-public class OrganizationListFragment extends Fragment {
+public class OrganizationListFragment extends ListFragment {
     @Override
     public View onCreateView(
             LayoutInflater inflater,
             ViewGroup container,
             Bundle savedInstanceState
     ) {
-        Bundle bundle = this.getArguments();
-
         ListView lv = (ListView) inflater.inflate(R.layout.list, container, false);
-        // lv.setEmptyView(inflater.inflate(R.layout.empty, container, false));
+
         OrganizationAdaptor organizationAdaptor = new OrganizationAdaptor(this.getActivity());
         lv.setAdapter(organizationAdaptor);
 

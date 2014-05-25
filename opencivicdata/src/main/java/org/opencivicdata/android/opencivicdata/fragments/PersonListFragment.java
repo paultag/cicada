@@ -9,10 +9,12 @@ package org.opencivicdata.android.opencivicdata.fragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import org.opencivicdata.android.opencivicdata.R;
@@ -32,21 +34,22 @@ import java.util.concurrent.Callable;
  * Bundle arguments I know about:
  *   - (none)
  */
-public class PersonListFragment extends Fragment {
+public class PersonListFragment extends ListFragment {
     @Override
     public View onCreateView(
             LayoutInflater inflater,
             ViewGroup container,
             Bundle savedInstanceState
     ) {
-        /* Bundle bundle = this.getArguments(); */
-        PersonAdaptor personAdaptor = new PersonAdaptor(this.getActivity());
         ListView lv = (ListView) inflater.inflate(R.layout.list, container, false);
-        // lv.setEmptyView(inflater.inflate(R.layout.empty, container, false));
+
+        PersonAdaptor personAdaptor = new PersonAdaptor(this.getActivity());
         lv.setAdapter(personAdaptor);
 
-        GenericListPopulator<Person> glp = new GenericListPopulator<Person>(personAdaptor);
+        GenericListPopulator<Person> glp = new GenericListPopulator<Person>(
+                personAdaptor);
         final OrganizationDAO organizationDAO = new OrganizationAPIDAO();
+
         glp.execute(new Callable<Iterator<Person>>() {
             @Override
             public Iterator<Person> call() throws Exception {

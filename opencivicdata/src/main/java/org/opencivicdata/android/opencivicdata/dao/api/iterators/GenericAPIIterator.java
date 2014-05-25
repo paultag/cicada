@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.opencivicdata.android.opencivicdata.dao.api.APIBase;
+import org.opencivicdata.android.opencivicdata.exceptions.OpenCivicDataRetrievalException;
 
 import java.io.IOException;
 import java.util.ArrayDeque;
@@ -77,9 +78,11 @@ public class GenericAPIIterator extends APIBase implements Iterator<JSONObject> 
             try {
                 this.fetchNextPage();
             } catch (IOException e) {
-                throw new IllegalStateException("OMGWTFBBQ");
+                throw new OpenCivicDataRetrievalException(
+                        "IO Exception while fetching a page: " + e.toString());
             } catch (JSONException e) {
-                throw new IllegalStateException("OMGWTFBBQ");
+                throw new OpenCivicDataRetrievalException(
+                        "JSON Exception while fetching a page: " + e.toString());
             }
         }
         return this.queue.remove();
