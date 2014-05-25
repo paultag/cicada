@@ -1,11 +1,13 @@
 package org.opencivicdata.android.opencivicdata.dao.api;
 
+import android.content.res.Resources;
 import android.text.TextUtils;
 import android.util.Log;
 
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.opencivicdata.android.opencivicdata.R;
 import org.opencivicdata.android.opencivicdata.support.HttpManager;
 
 import java.io.BufferedReader;

@@ -21,8 +21,8 @@ import org.opencivicdata.android.opencivicdata.support.TabbedActionBarActivity;
 public class MainActivity extends TabbedActionBarActivity {
 	@Override
 	public void addTabs() {
-        APIBase.setApiKey("");
-        APIBase.setApiHost("http://api.opencivicdata.org");
+        APIBase.setApiKey(this.getResources().getString(R.string.api_key));
+        APIBase.setApiHost(this.getResources().getString(R.string.api_host));
 
         this.addTab(new PersonListFragment(), "People");
 		this.addTab(new OrganizationListFragment(), "Organizations");
