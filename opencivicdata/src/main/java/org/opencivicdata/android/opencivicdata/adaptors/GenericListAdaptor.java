@@ -31,6 +31,13 @@ abstract public class GenericListAdaptor<E> extends BaseAdapter {
         this.notifyDataSetChanged();
     }
 
+    public void add(Iterator<E> objs) {
+        while (objs.hasNext()) {
+            this.arrayList.add(objs.next());
+        }
+        this.notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
         return this.arrayList.size();

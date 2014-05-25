@@ -9,6 +9,7 @@ import android.widget.ListView;
 import org.opencivicdata.android.opencivicdata.adaptors.GenericListAdaptor;
 import org.opencivicdata.android.opencivicdata.dao.api.iterators.GenericAPIIterator;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.Callable;
 
@@ -21,7 +22,8 @@ import java.util.concurrent.Callable;
  * Contributors:
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
-public class GenericListPopulator<E> extends AsyncTask<Callable<Iterator<E>>, E, Void> {
+public class GenericListPopulator<E> extends AsyncTask<Callable<Iterator<E>>, Void, Iterator<E>> {
+    private static final String TAG = GenericListPopulator.class.getName();
 
     protected GenericListAdaptor<E> adaptor;
 
@@ -29,35 +31,31 @@ public class GenericListPopulator<E> extends AsyncTask<Callable<Iterator<E>>, E,
         this.adaptor = adaptor;
     }
 
-
-
     @Override
-    protected Void doInBackground(Callable<Iterator<E>>... callables) {
-        Log.i("PAUL", "Doing in Background");
+    protected Iterator<E> doInBackground(Callable<Iterator<E>>... callables) {
+        Log.i(this.TAG, "Doing in Background");
+        ArrayList<E> returnData = new ArrayList<E>();
+
         for (Callable<Iterator<E>> callable : callables) {
             Iterator<E> results = null;
             try {
                 results = callable.call();
             } catch (Exception e) {
-                Log.e("PAUL", e.toString());
+                Log.e(this.TAG, e.toString());
             }
+
             if (results != null) {
                 while (results.hasNext()) {
-                    E obj = results.next();
-                    this.publishProgress(obj);
+                    returnData.add(results.next());
                 }
-                Log.i("PAUL", " -> told updated");
-            } else {
-                Log.w("PAUL", "Crap, got a null response");
             }
         }
-        return (null);
+
+        return returnData.iterator();
     }
 
     @Override
-    protected void onProgressUpdate(E... items) {
-        for (E e : items) {
-            this.adaptor.add(e);
-        }
+    protected void onPostExecute(Iterator<E> objs) {
+        this.adaptor.add(objs);
     }
 }
