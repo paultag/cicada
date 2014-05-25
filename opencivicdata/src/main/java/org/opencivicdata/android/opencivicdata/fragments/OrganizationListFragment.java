@@ -34,7 +34,7 @@ import java.util.concurrent.Callable;
  * Bundle arguments I know about:
  *   - (none)
  */
-public class OrganizationListFragment extends ListFragment {
+public class OrganizationListFragment extends Fragment {
     @Override
     public View onCreateView(
             LayoutInflater inflater,
