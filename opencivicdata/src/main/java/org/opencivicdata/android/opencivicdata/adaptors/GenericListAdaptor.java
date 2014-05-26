@@ -17,6 +17,7 @@ import java.util.Iterator;
  * Contributors:
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
+
 abstract public class GenericListAdaptor<E> extends BaseAdapter {
     protected ArrayList<E> arrayList;
     protected Context context;

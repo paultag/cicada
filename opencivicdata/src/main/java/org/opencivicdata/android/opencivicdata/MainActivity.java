@@ -22,7 +22,7 @@ public class MainActivity extends TabbedActionBarActivity {
 	@Override
 	public void addTabs() {
         APIBase.setApiKey(this.getResources().getString(R.string.api_key));
-        APIBase.setApiHost(this.getResources().getString(R.string.api_host));
+        APIBase.setApiHost(this.getResources().getString(R.string.ocd_api_host));
 
         this.addTab(new PersonListFragment(), "People");
 		this.addTab(new OrganizationListFragment(), "Organizations");

@@ -1,6 +1,30 @@
-<ListView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@android:id/list"
+<LinearLayout
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-</ListView>
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- TODO Move the ProgressBar into a Sunlight theme. Style it. -->
+    <ProgressBar
+        style="@style/Widget.AppCompat.Base.ProgressBar.Horizontal"
+        android:id="@+id/list_loading"
+        android:visibility="invisible"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:indeterminateOnly="true"
+        android:indeterminateBehavior="repeat"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+
+    <!-- XXX: Hrum. What's going on here.
+    <include
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        layout="@layout/empty"/>
+    -->
+</LinearLayout>

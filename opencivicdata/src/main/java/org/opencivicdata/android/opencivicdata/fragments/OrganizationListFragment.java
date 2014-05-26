@@ -14,7 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import org.opencivicdata.android.opencivicdata.R;
 import org.opencivicdata.android.opencivicdata.adaptors.OrganizationAdaptor;
@@ -41,13 +43,15 @@ public class OrganizationListFragment extends Fragment {
             ViewGroup container,
             Bundle savedInstanceState
     ) {
-        ListView lv = (ListView) inflater.inflate(R.layout.list, container, false);
+        LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.list, container, false);
+        ListView lv = (ListView) linearLayout.findViewById(android.R.id.list);
 
         OrganizationAdaptor organizationAdaptor = new OrganizationAdaptor(this.getActivity());
         lv.setAdapter(organizationAdaptor);
+        ProgressBar pb = (ProgressBar) linearLayout.findViewById(R.id.list_loading);
 
         GenericListPopulator<Organization> glp = new GenericListPopulator<Organization>(
-                organizationAdaptor);
+                organizationAdaptor, pb);
 
         final OrganizationDAO organizationDAO = new OrganizationAPIDAO();
         glp.execute(new Callable<Iterator<Organization>>() {
@@ -59,6 +63,6 @@ public class OrganizationListFragment extends Fragment {
             }
         });
 
-        return lv;
+        return linearLayout;
     }
 }

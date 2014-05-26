@@ -5,8 +5,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import org.opencivicdata.android.opencivicdata.adaptors.GenericListAdaptor;
+import org.opencivicdata.android.opencivicdata.adaptors.PersonAdaptor;
 import org.opencivicdata.android.opencivicdata.dao.api.iterators.GenericAPIIterator;
 
 import java.util.ArrayList;
@@ -26,9 +28,24 @@ public class GenericListPopulator<E> extends AsyncTask<Callable<Iterator<E>>, Vo
     private static final String TAG = GenericListPopulator.class.getName();
 
     protected GenericListAdaptor<E> adaptor;
+    protected ProgressBar progressBar;
+
+    public GenericListPopulator(GenericListAdaptor<E> adaptor, ProgressBar progressBar) {
+        this.adaptor = adaptor;
+        this.progressBar = progressBar;
+    }
 
     public GenericListPopulator(GenericListAdaptor<E> adaptor) {
         this.adaptor = adaptor;
+        this.progressBar = null;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        if (this.progressBar != null) {
+            this.progressBar.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -57,5 +74,8 @@ public class GenericListPopulator<E> extends AsyncTask<Callable<Iterator<E>>, Vo
     @Override
     protected void onPostExecute(Iterator<E> objs) {
         this.adaptor.add(objs);
+        if (this.progressBar != null) {
+            this.progressBar.setVisibility(View.INVISIBLE);
+        }
     }
 }

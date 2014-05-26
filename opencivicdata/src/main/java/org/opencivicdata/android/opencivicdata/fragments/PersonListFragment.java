@@ -7,8 +7,8 @@ package org.opencivicdata.android.opencivicdata.fragments;
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import org.opencivicdata.android.opencivicdata.R;
 import org.opencivicdata.android.opencivicdata.adaptors.PersonAdaptor;
@@ -41,13 +42,15 @@ public class PersonListFragment extends Fragment {
             ViewGroup container,
             Bundle savedInstanceState
     ) {
-        ListView lv = (ListView) inflater.inflate(R.layout.list, container, false);
+        LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.list, container, false);
+        ListView lv = (ListView) linearLayout.findViewById(android.R.id.list);
 
         PersonAdaptor personAdaptor = new PersonAdaptor(this.getActivity());
         lv.setAdapter(personAdaptor);
 
+        ProgressBar pb = (ProgressBar) linearLayout.findViewById(R.id.list_loading);
         GenericListPopulator<Person> glp = new GenericListPopulator<Person>(
-                personAdaptor);
+                personAdaptor, pb);
         final OrganizationDAO organizationDAO = new OrganizationAPIDAO();
 
         glp.execute(new Callable<Iterator<Person>>() {
@@ -59,6 +62,6 @@ public class PersonListFragment extends Fragment {
             }
         });
 
-        return lv;
+        return linearLayout;
     }
 }
