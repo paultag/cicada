@@ -9,8 +9,6 @@ package org.opencivicdata.android.opencivicdata.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +18,12 @@ import android.widget.ProgressBar;
 
 import org.opencivicdata.android.opencivicdata.R;
 import org.opencivicdata.android.opencivicdata.adaptors.PersonAdaptor;
-import org.opencivicdata.android.opencivicdata.dao.OrganizationDAO;
-import org.opencivicdata.android.opencivicdata.dao.api.OrganizationAPIDAO;
+import org.opencivicdata.android.opencivicdata.dao.PaginatedList;
+import org.opencivicdata.android.opencivicdata.dao.PersonDAO;
+import org.opencivicdata.android.opencivicdata.dao.api.PersonAPIDAO;
 import org.opencivicdata.android.opencivicdata.models.Person;
 import org.opencivicdata.android.opencivicdata.tasks.GenericListPopulator;
 
-import java.util.Iterator;
 import java.util.concurrent.Callable;
 
 /**
@@ -52,13 +50,12 @@ public class PersonListFragment extends Fragment {
 
         GenericListPopulator<Person> glp = new GenericListPopulator<Person>(
                 personAdaptor, pb);
-        final OrganizationDAO organizationDAO = new OrganizationAPIDAO();
+        final PersonDAO personDAO = new PersonAPIDAO();
 
-        glp.execute(new Callable<Iterator<Person>>() {
+        glp.execute(new Callable<PaginatedList<Person>>() {
             @Override
-            public Iterator<Person> call() throws Exception {
-                return organizationDAO.getMembers(
-                        "ocd-organization/926d95da-d78c-11e3-97b1-22000ab81ec3");
+            public PaginatedList<Person> call() throws Exception {
+                return personDAO.getPeopleByName("john");
             }
         });
 

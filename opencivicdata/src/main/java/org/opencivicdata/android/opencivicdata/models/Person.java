@@ -1,5 +1,7 @@
 package org.opencivicdata.android.opencivicdata.models;
 
+import java.util.Iterator;
+
 /**
  * This file is a part of Open Civic Data.
  * <p/>

@@ -1,10 +1,7 @@
 package org.opencivicdata.android.opencivicdata.dao;
 
-import org.json.JSONException;
-import org.opencivicdata.android.opencivicdata.models.Organization;
-import org.opencivicdata.android.opencivicdata.models.Person;
+import org.opencivicdata.android.opencivicdata.dao.api.APIBase;
 
-import java.io.IOException;
 import java.util.Iterator;
 
 /**
@@ -16,7 +13,8 @@ import java.util.Iterator;
  * Contributors:
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
-public interface OrganizationDAO {
-    public Organization getOrganization(String openCivicDataId);
-    public PaginatedList<Organization> getOrganizationsByJurisdiction(String jurisdictionId);
+
+public interface PaginatedList<E> {
+    public Iterator<E> getNextPage();
+    public boolean hasNextPage();
 }

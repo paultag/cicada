@@ -3,13 +3,11 @@ package org.opencivicdata.android.opencivicdata.tasks;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import org.opencivicdata.android.opencivicdata.adaptors.GenericListAdaptor;
-import org.opencivicdata.android.opencivicdata.adaptors.PersonAdaptor;
-import org.opencivicdata.android.opencivicdata.dao.api.iterators.GenericAPIIterator;
+import org.opencivicdata.android.opencivicdata.dao.PaginatedList;
+import org.opencivicdata.android.opencivicdata.exceptions.OpenCivicDataRetrievalException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,7 +22,8 @@ import java.util.concurrent.Callable;
  * Contributors:
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
-public class GenericListPopulator<E> extends AsyncTask<Callable<Iterator<E>>, Void, Iterator<E>> {
+
+public class GenericListPopulator<E> extends AsyncTask<Callable<PaginatedList<E>>, Void, Iterator<E>> {
     private static final String TAG = GenericListPopulator.class.getName();
 
     protected GenericListAdaptor<E> adaptor;
@@ -49,21 +48,28 @@ public class GenericListPopulator<E> extends AsyncTask<Callable<Iterator<E>>, Vo
     }
 
     @Override
-    protected Iterator<E> doInBackground(Callable<Iterator<E>>... callables) {
+    protected Iterator<E> doInBackground(Callable<PaginatedList<E>>... callables) {
         Log.i(this.TAG, "Doing in Background");
         ArrayList<E> returnData = new ArrayList<E>();
 
-        for (Callable<Iterator<E>> callable : callables) {
-            Iterator<E> results = null;
+        for (Callable<PaginatedList<E>> callable : callables) {
+            PaginatedList<E> results;
+
             try {
                 results = callable.call();
             } catch (Exception e) {
-                Log.e(this.TAG, e.toString());
+                throw new OpenCivicDataRetrievalException(
+                        "Failure fetching remote resource: " + e.getMessage());
             }
 
             if (results != null) {
-                while (results.hasNext()) {
-                    returnData.add(results.next());
+                if (results.hasNextPage()) {
+                    Iterator<E> x = results.getNextPage();
+                    while (x.hasNext()) {
+                        returnData.add(x.next());
+                    }
+                } else {
+                    throw new OpenCivicDataRetrievalException("No more pages. Sorry bout that.");
                 }
             }
         }

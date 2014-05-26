@@ -19,4 +19,5 @@ import java.util.Iterator;
 public interface PersonDAO {
     public Person getPerson(String openCivicDataID);
     public Iterator<Organization> getOrganizations(String personOpenCivicId);
+    public PaginatedList<Person> getPeopleByName(String name);
 }

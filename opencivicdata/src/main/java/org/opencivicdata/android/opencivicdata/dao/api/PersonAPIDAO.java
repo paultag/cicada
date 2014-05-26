@@ -2,8 +2,9 @@ package org.opencivicdata.android.opencivicdata.dao.api;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.opencivicdata.android.opencivicdata.dao.PaginatedList;
 import org.opencivicdata.android.opencivicdata.dao.PersonDAO;
-import org.opencivicdata.android.opencivicdata.dao.api.iterators.PersonAPIIterator;
+import org.opencivicdata.android.opencivicdata.dao.api.paginators.APIPersonPaginator;
 import org.opencivicdata.android.opencivicdata.models.Organization;
 import org.opencivicdata.android.opencivicdata.models.Person;
 
@@ -46,6 +47,13 @@ public class PersonAPIDAO extends APIBase implements PersonDAO {
     @Override
     public Iterator<Organization> getOrganizations(String personOpenCivicId) {
         throw new IllegalStateException();
+    }
+
+    @Override
+    public PaginatedList<Person> getPeopleByName(String name) {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("name", name);
+        return new APIPersonPaginator("people", null, params);
     }
 
 }

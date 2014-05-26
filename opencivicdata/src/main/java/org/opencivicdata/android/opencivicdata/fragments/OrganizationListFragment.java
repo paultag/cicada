@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import org.opencivicdata.android.opencivicdata.R;
 import org.opencivicdata.android.opencivicdata.adaptors.OrganizationAdaptor;
 import org.opencivicdata.android.opencivicdata.dao.OrganizationDAO;
+import org.opencivicdata.android.opencivicdata.dao.PaginatedList;
 import org.opencivicdata.android.opencivicdata.dao.api.OrganizationAPIDAO;
 import org.opencivicdata.android.opencivicdata.models.Organization;
 import org.opencivicdata.android.opencivicdata.models.Person;
@@ -47,7 +48,7 @@ public class OrganizationListFragment extends Fragment {
         LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.list, container, false);
         ListView lv = (ListView) linearLayout.findViewById(android.R.id.list);
 
-        OrganizationAdaptor organizationAdaptor = new OrganizationAdaptor(this.getActivity());
+        final OrganizationAdaptor organizationAdaptor = new OrganizationAdaptor(this.getActivity());
         lv.setAdapter(organizationAdaptor);
         ProgressBar pb = (ProgressBar) linearLayout.findViewById(R.id.list_loading);
 
@@ -55,9 +56,9 @@ public class OrganizationListFragment extends Fragment {
                 organizationAdaptor, pb);
 
         final OrganizationDAO organizationDAO = new OrganizationAPIDAO();
-        glp.execute(new Callable<Iterator<Organization>>() {
+        glp.execute(new Callable<PaginatedList<Organization>>() {
             @Override
-            public Iterator<Organization> call() throws Exception {
+            public PaginatedList<Organization> call() throws Exception {
                 return organizationDAO.getOrganizationsByJurisdiction(
                         "ocd-jurisdiction/country:us/state:ma/legislature");
             }

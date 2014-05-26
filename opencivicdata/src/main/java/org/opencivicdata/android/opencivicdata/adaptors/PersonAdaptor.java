@@ -52,7 +52,6 @@ public class PersonAdaptor extends GenericListAdaptor<Person> {
         TextView name = (TextView) layout.findViewById(R.id.person_item_name);
         ImageView imageView = (ImageView) layout.findViewById(R.id.person_item_image);
         name.setText(person.getName());
-
         Picasso.with(context).load(person.getImage()).into(imageView);
 
         return layout;
