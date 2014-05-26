@@ -17,10 +17,12 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import org.opencivicdata.android.opencivicdata.R;
+import org.opencivicdata.android.opencivicdata.adaptors.GenericListScrollManager;
 import org.opencivicdata.android.opencivicdata.adaptors.PersonAdaptor;
 import org.opencivicdata.android.opencivicdata.dao.PaginatedList;
 import org.opencivicdata.android.opencivicdata.dao.PersonDAO;
 import org.opencivicdata.android.opencivicdata.dao.api.PersonAPIDAO;
+import org.opencivicdata.android.opencivicdata.models.Organization;
 import org.opencivicdata.android.opencivicdata.models.Person;
 import org.opencivicdata.android.opencivicdata.tasks.GenericListPopulator;
 
@@ -48,16 +50,13 @@ public class PersonListFragment extends Fragment {
 
         ProgressBar pb = (ProgressBar) linearLayout.findViewById(R.id.list_loading);
 
-        GenericListPopulator<Person> glp = new GenericListPopulator<Person>(
-                personAdaptor, pb);
-        final PersonDAO personDAO = new PersonAPIDAO();
-
-        glp.execute(new Callable<PaginatedList<Person>>() {
-            @Override
-            public PaginatedList<Person> call() throws Exception {
-                return personDAO.getPeopleByName("john");
-            }
-        });
+        PersonDAO personDAO = new PersonAPIDAO();
+        GenericListScrollManager<Person> genericListScrollManager = new GenericListScrollManager<Person>(
+                personAdaptor,
+                pb,
+                personDAO.getPeopleByName("John")
+        );
+        lv.setOnScrollListener(genericListScrollManager);
 
         return linearLayout;
     }

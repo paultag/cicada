@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import org.opencivicdata.android.opencivicdata.adaptors.GenericListAdaptor;
+import org.opencivicdata.android.opencivicdata.adaptors.GenericListScrollManager;
 import org.opencivicdata.android.opencivicdata.dao.PaginatedList;
 import org.opencivicdata.android.opencivicdata.exceptions.OpenCivicDataRetrievalException;
 
@@ -23,54 +24,37 @@ import java.util.concurrent.Callable;
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
 
-public class GenericListPopulator<E> extends AsyncTask<Callable<PaginatedList<E>>, Void, Iterator<E>> {
+public class GenericListPopulator<E> extends AsyncTask<PaginatedList<E>, Void, Iterator<E>> {
     private static final String TAG = GenericListPopulator.class.getName();
 
     protected GenericListAdaptor<E> adaptor;
-    protected ProgressBar progressBar;
+    GenericListScrollManager<E> gsm;
 
-    public GenericListPopulator(GenericListAdaptor<E> adaptor, ProgressBar progressBar) {
+    public GenericListPopulator(GenericListScrollManager<E> gsm, GenericListAdaptor<E> adaptor) {
         this.adaptor = adaptor;
-        this.progressBar = progressBar;
-    }
-
-    public GenericListPopulator(GenericListAdaptor<E> adaptor) {
-        this.adaptor = adaptor;
-        this.progressBar = null;
+        this.gsm = gsm;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        if (this.progressBar != null) {
-            this.progressBar.setVisibility(View.VISIBLE);
-        }
+        this.gsm.setLoading();
     }
 
     @Override
-    protected Iterator<E> doInBackground(Callable<PaginatedList<E>>... callables) {
+    protected Iterator<E> doInBackground(PaginatedList<E>... results) {
         Log.i(this.TAG, "Doing in Background");
         ArrayList<E> returnData = new ArrayList<E>();
 
-        for (Callable<PaginatedList<E>> callable : callables) {
-            PaginatedList<E> results;
+        for (PaginatedList<E> result : results) {
 
-            try {
-                results = callable.call();
-            } catch (Exception e) {
-                throw new OpenCivicDataRetrievalException(
-                        "Failure fetching remote resource: " + e.getMessage());
-            }
-
-            if (results != null) {
-                if (results.hasNextPage()) {
-                    Iterator<E> x = results.getNextPage();
-                    while (x.hasNext()) {
-                        returnData.add(x.next());
-                    }
-                } else {
-                    throw new OpenCivicDataRetrievalException("No more pages. Sorry bout that.");
+            if (result.hasNextPage()) {
+                Iterator<E> x = result.getNextPage();
+                while (x.hasNext()) {
+                    returnData.add(x.next());
                 }
+            } else {
+                throw new OpenCivicDataRetrievalException("No more pages. Sorry bout that.");
             }
         }
 
@@ -80,8 +64,6 @@ public class GenericListPopulator<E> extends AsyncTask<Callable<PaginatedList<E>
     @Override
     protected void onPostExecute(Iterator<E> objs) {
         this.adaptor.add(objs);
-        if (this.progressBar != null) {
-            this.progressBar.setVisibility(View.GONE);
-        }
+        this.gsm.setLoaded();
     }
 }

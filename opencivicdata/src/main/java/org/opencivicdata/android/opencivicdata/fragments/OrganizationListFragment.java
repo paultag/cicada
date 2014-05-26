@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import org.opencivicdata.android.opencivicdata.R;
+import org.opencivicdata.android.opencivicdata.adaptors.GenericListScrollManager;
 import org.opencivicdata.android.opencivicdata.adaptors.OrganizationAdaptor;
 import org.opencivicdata.android.opencivicdata.dao.OrganizationDAO;
 import org.opencivicdata.android.opencivicdata.dao.PaginatedList;
@@ -52,17 +53,16 @@ public class OrganizationListFragment extends Fragment {
         lv.setAdapter(organizationAdaptor);
         ProgressBar pb = (ProgressBar) linearLayout.findViewById(R.id.list_loading);
 
-        GenericListPopulator<Organization> glp = new GenericListPopulator<Organization>(
-                organizationAdaptor, pb);
+        OrganizationDAO organizationDAO = new OrganizationAPIDAO();
+        PaginatedList<Organization> paginatedList = organizationDAO.getOrganizationsByJurisdiction(
+                "ocd-jurisdiction/country:us/state:ma/legislature");
 
-        final OrganizationDAO organizationDAO = new OrganizationAPIDAO();
-        glp.execute(new Callable<PaginatedList<Organization>>() {
-            @Override
-            public PaginatedList<Organization> call() throws Exception {
-                return organizationDAO.getOrganizationsByJurisdiction(
-                        "ocd-jurisdiction/country:us/state:ma/legislature");
-            }
-        });
+        GenericListScrollManager<Organization> genericListScrollManager = new GenericListScrollManager<Organization>(
+                organizationAdaptor,
+                pb,
+                paginatedList
+        );
+        lv.setOnScrollListener(genericListScrollManager);
 
         return linearLayout;
     }
