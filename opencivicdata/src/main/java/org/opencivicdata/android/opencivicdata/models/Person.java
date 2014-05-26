@@ -12,6 +12,7 @@ package org.opencivicdata.android.opencivicdata.models;
 public class Person {
     protected String openCivicId;
     protected String name;
+    protected String image;
 
     public String getOpenCivicId() {
         return openCivicId;
@@ -24,5 +25,11 @@ public class Person {
     }
     public void setName(String name) {
         this.name = name;
+    }
+    public String getImage() {
+        return image;
+    }
+    public void setImage(String image) {
+        this.image = image;
     }
 }

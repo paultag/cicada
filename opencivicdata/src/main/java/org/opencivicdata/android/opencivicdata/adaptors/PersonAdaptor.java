@@ -12,8 +12,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.opencivicdata.android.opencivicdata.R;
 import org.opencivicdata.android.opencivicdata.dao.OrganizationDAO;
@@ -47,7 +50,10 @@ public class PersonAdaptor extends GenericListAdaptor<Person> {
         /* Set imageView and friends */
         Person person = (Person) this.getItem(i);
         TextView name = (TextView) layout.findViewById(R.id.person_item_name);
+        ImageView imageView = (ImageView) layout.findViewById(R.id.person_item_image);
         name.setText(person.getName());
+
+        Picasso.with(context).load(person.getImage()).into(imageView);
 
         return layout;
     }
