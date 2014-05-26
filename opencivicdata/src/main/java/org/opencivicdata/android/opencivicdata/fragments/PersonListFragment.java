@@ -49,6 +49,7 @@ public class PersonListFragment extends Fragment {
         lv.setAdapter(personAdaptor);
 
         ProgressBar pb = (ProgressBar) linearLayout.findViewById(R.id.list_loading);
+
         GenericListPopulator<Person> glp = new GenericListPopulator<Person>(
                 personAdaptor, pb);
         final OrganizationDAO organizationDAO = new OrganizationAPIDAO();
@@ -56,7 +57,6 @@ public class PersonListFragment extends Fragment {
         glp.execute(new Callable<Iterator<Person>>() {
             @Override
             public Iterator<Person> call() throws Exception {
-                Log.i("PAUL", "Getting Members");
                 return organizationDAO.getMembers(
                         "ocd-organization/926d95da-d78c-11e3-97b1-22000ab81ec3");
             }

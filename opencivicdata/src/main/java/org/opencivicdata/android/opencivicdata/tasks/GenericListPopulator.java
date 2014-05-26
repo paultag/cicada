@@ -75,7 +75,7 @@ public class GenericListPopulator<E> extends AsyncTask<Callable<Iterator<E>>, Vo
     protected void onPostExecute(Iterator<E> objs) {
         this.adaptor.add(objs);
         if (this.progressBar != null) {
-            this.progressBar.setVisibility(View.INVISIBLE);
+            this.progressBar.setVisibility(View.GONE);
         }
     }
 }

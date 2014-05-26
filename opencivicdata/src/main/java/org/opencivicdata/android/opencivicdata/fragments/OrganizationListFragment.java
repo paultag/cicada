@@ -37,6 +37,7 @@ import java.util.concurrent.Callable;
  *   - (none)
  */
 public class OrganizationListFragment extends Fragment {
+
     @Override
     public View onCreateView(
             LayoutInflater inflater,
@@ -57,7 +58,6 @@ public class OrganizationListFragment extends Fragment {
         glp.execute(new Callable<Iterator<Organization>>() {
             @Override
             public Iterator<Organization> call() throws Exception {
-                Log.i("PAUL", "Getting orgs");
                 return organizationDAO.getOrganizationsByJurisdiction(
                         "ocd-jurisdiction/country:us/state:ma/legislature");
             }

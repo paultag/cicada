@@ -30,6 +30,8 @@ import java.util.Map;
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
 public class APIBase {
+    private static final String TAG = APIBase.class.getName();
+
     protected static String apiKey;
     protected static String host;
 
@@ -82,12 +84,12 @@ public class APIBase {
     }
 
     protected JSONObject getJSONObject(String url) throws IOException, JSONException {
-        Log.d("PAUL", "Loading JSON Object: " + url);
+        Log.d(this.TAG, "Loading JSON Object: " + url);
         return new JSONObject(this.fetchJSON(url));
     }
 
     protected String fetchJSON(String requestedUrl) throws IOException {
-        Log.d("PAUL", "Hitting URL " + requestedUrl);
+        Log.d(this.TAG, "Hitting URL " + requestedUrl);
         URL url = new URL(requestedUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         /* TODO: Set connection headers (User-agent, etc) */

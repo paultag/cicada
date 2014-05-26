@@ -8,7 +8,7 @@
     <ProgressBar
         style="@style/Widget.AppCompat.Base.ProgressBar.Horizontal"
         android:id="@+id/list_loading"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:indeterminateOnly="true"
         android:indeterminateBehavior="repeat"
