@@ -22,8 +22,20 @@ import java.io.IOException;
 import java.util.HashMap;
 
 
+/**
+ * Implementation of the PersonDAO, using the Open Civic Data API
+ * as the Data backend.
+ */
 public class PersonAPIDAO extends APIBase implements PersonDAO {
 
+    /**
+     * Internal implementation detail for how we turn a JSON API response
+     * into a Person.
+     *
+     * @param jsonPerson JSON API response of a Person
+     * @return a Person object, hydrated.
+     * @throws JSONException On malformed JSON
+     */
     public static Person createPerson(JSONObject jsonPerson) throws JSONException {
         Person person = new Person();
         person.setOpenCivicId(jsonPerson.getString("id"));

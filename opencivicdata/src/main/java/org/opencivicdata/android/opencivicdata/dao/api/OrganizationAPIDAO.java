@@ -28,8 +28,20 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * Implementation of the OrganizationDAO, using the Open Civic Data API
+ * as the Data backend.
+ */
 public class OrganizationAPIDAO extends APIBase implements OrganizationDAO {
 
+    /**
+     * Internal implementation detail for how we turn a JSON API response
+     * into an Organization.
+     *
+     * @param jsonOrganization JSON API Response of an Organization
+     * @return a Hydrated Organization object
+     * @throws JSONException on malformed JSON
+     */
     public static Organization createOrganization(JSONObject jsonOrganization) throws JSONException {
         Organization organization = new Organization();
         organization.setOpenCivicId(jsonOrganization.getString("id"));

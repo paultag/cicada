@@ -11,14 +11,13 @@ package org.opencivicdata.android.opencivicdata.dao.api;
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
 
-import android.content.res.Resources;
 import android.text.TextUtils;
 import android.util.Log;
 
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.opencivicdata.android.opencivicdata.R;
+import org.opencivicdata.android.opencivicdata.exceptions.OpenCivicDataException;
 import org.opencivicdata.android.opencivicdata.support.HttpManager;
 
 import java.io.BufferedReader;
@@ -31,6 +30,10 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
 
+/**
+ * Common API base, provides methods to aid in working with the OpenCivicData API's
+ * endpoints in a normal way.
+ */
 public class APIBase {
     private static final String TAG = APIBase.class.getName();
 
@@ -49,6 +52,18 @@ public class APIBase {
         APIBase.host = host;
     }
 
+    /**
+     * Gets the JSON Object for a given call
+     *
+     * @param method Open Civic Data endpoint method (/people, /organizations,
+     *               or /jurisdictions)
+     * @param fields Fields to request. May be null.
+     * @param params Key/Value store of URL GET arguments.
+     * @return a JSON object for the call
+     * @throws IOException On bad I/O
+     * @throws JSONException on bad JSON
+     * @throws OpenCivicDataException when it's not set up right
+     */
     protected JSONObject getObjectFor(
             String method,
             String[] fields,
@@ -63,7 +78,7 @@ public class APIBase {
             Map<String,String> params
     ) throws UnsupportedEncodingException {
         if (APIBase.apiKey == null || APIBase.host == null) {
-            throw new RuntimeException("API key or API host not configured");
+            throw new OpenCivicDataException("API key or API host not configured");
         }
 
         if (fields != null && fields.length > 0) {

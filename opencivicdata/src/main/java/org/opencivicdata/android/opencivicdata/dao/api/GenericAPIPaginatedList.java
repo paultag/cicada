@@ -22,6 +22,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * Generic type PaginatedList for API responses. This handles the Open Civic Data
+ * paged API response globally, and can be typed in Implementations.
+ *
+ * @param <E> Open Civic Data model type
+ */
 public abstract class GenericAPIPaginatedList<E> extends APIBase implements PaginatedList<E> {
 
     protected String method;
@@ -30,6 +36,10 @@ public abstract class GenericAPIPaginatedList<E> extends APIBase implements Pagi
     protected int page;
     protected int maxPage;
 
+    /**
+     * Paginate the following query - this interface is matched with the
+     * APIBase.getObjectFor method.
+     */
     public GenericAPIPaginatedList(String method, String[] fields, Map<String, String> params) {
         this.method = method;
         this.fields = fields;
@@ -38,6 +48,12 @@ public abstract class GenericAPIPaginatedList<E> extends APIBase implements Pagi
         this.maxPage = 0;
     }
 
+    /**
+     * Preform all invocation needed to go from a JSON blob to an object
+     * of type <E>.
+     * @param input input JSON blob
+     * @return hydrated Open Civic Data object.
+     */
     protected abstract E handleObject(JSONObject input);
 
     @Override
