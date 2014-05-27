@@ -2,17 +2,14 @@ package org.opencivicdata.android.opencivicdata.tasks;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import org.opencivicdata.android.opencivicdata.adaptors.GenericListAdaptor;
-import org.opencivicdata.android.opencivicdata.adaptors.GenericListScrollManager;
+import org.opencivicdata.android.opencivicdata.support.GenericListScrollManager;
 import org.opencivicdata.android.opencivicdata.dao.PaginatedList;
 import org.opencivicdata.android.opencivicdata.exceptions.OpenCivicDataRetrievalException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.concurrent.Callable;
 
 /**
  * This file is a part of Open Civic Data.

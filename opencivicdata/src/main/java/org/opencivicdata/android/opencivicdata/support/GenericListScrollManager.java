@@ -1,9 +1,10 @@
-package org.opencivicdata.android.opencivicdata.adaptors;
+package org.opencivicdata.android.opencivicdata.support;
 
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ProgressBar;
 
+import org.opencivicdata.android.opencivicdata.adaptors.GenericListAdaptor;
 import org.opencivicdata.android.opencivicdata.dao.PaginatedList;
 import org.opencivicdata.android.opencivicdata.tasks.GenericListPopulator;
 

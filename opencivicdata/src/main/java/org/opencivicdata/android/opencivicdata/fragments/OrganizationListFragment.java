@@ -9,8 +9,6 @@ package org.opencivicdata.android.opencivicdata.fragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,17 +17,12 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import org.opencivicdata.android.opencivicdata.R;
-import org.opencivicdata.android.opencivicdata.adaptors.GenericListScrollManager;
+import org.opencivicdata.android.opencivicdata.support.GenericListScrollManager;
 import org.opencivicdata.android.opencivicdata.adaptors.OrganizationAdaptor;
 import org.opencivicdata.android.opencivicdata.dao.OrganizationDAO;
 import org.opencivicdata.android.opencivicdata.dao.PaginatedList;
 import org.opencivicdata.android.opencivicdata.dao.api.OrganizationAPIDAO;
 import org.opencivicdata.android.opencivicdata.models.Organization;
-import org.opencivicdata.android.opencivicdata.models.Person;
-import org.opencivicdata.android.opencivicdata.tasks.GenericListPopulator;
-
-import java.util.Iterator;
-import java.util.concurrent.Callable;
 
 /**
  * OrganizationListFragment is the simple fragment to handle listing Organizations. Yes,
