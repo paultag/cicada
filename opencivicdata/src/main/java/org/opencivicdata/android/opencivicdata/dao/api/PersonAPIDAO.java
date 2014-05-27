@@ -27,7 +27,7 @@ public class PersonAPIDAO extends APIBase implements PersonDAO {
         Person person = new Person();
         person.setOpenCivicId(jsonPerson.getString("id"));
         person.setName(jsonPerson.getString("name"));
-        person.setImage(jsonPerson.getString("image"));
+        person.setImage(jsonPerson.optString("image", null));
         return person;
     }
 

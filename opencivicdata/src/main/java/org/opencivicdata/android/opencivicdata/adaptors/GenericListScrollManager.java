@@ -1,6 +1,5 @@
 package org.opencivicdata.android.opencivicdata.adaptors;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ProgressBar;
