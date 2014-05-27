@@ -1,5 +1,16 @@
 package org.opencivicdata.android.opencivicdata.dao.api;
 
+/*
+ * This file is a part of Open Civic Data.
+ *
+ * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions
+ * of the BSD-3 license in the LICENSE file contained in this source
+ * distribution.
+ *
+ * Contributors:
+ * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
+ */
+
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -17,15 +28,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-/**
- * This file is a part of Open Civic Data.
- * <p/>
- * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions of the BSD-3 license in
- * the LICENSE file contained in this source distribution.
- * <p/>
- * Contributors:
- * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
- */
 public class OrganizationAPIDAO extends APIBase implements OrganizationDAO {
 
     public static Organization createOrganization(JSONObject jsonOrganization) throws JSONException {

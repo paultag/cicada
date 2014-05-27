@@ -1,5 +1,16 @@
 package org.opencivicdata.android.opencivicdata.tasks;
 
+/*
+ * This file is a part of Open Civic Data.
+ *
+ * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions
+ * of the BSD-3 license in the LICENSE file contained in this source
+ * distribution.
+ *
+ * Contributors:
+ * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
+ */
+
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -10,16 +21,6 @@ import org.opencivicdata.android.opencivicdata.exceptions.OpenCivicDataRetrieval
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
-/**
- * This file is a part of Open Civic Data.
- * <p/>
- * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions of the BSD-3 license in
- * the LICENSE file contained in this source distribution.
- * <p/>
- * Contributors:
- * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
- */
 
 public class GenericListPopulator<E> extends AsyncTask<PaginatedList<E>, Void, Iterator<E>> {
     private static final String TAG = GenericListPopulator.class.getName();

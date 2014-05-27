@@ -1,5 +1,17 @@
 package org.opencivicdata.android.opencivicdata.support;
 
+/*
+ * This file is a part of Open Civic Data.
+ *
+ * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions
+ * of the BSD-3 license in the LICENSE file contained in this source
+ * distribution.
+ *
+ * Contributors:
+ * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
+ * - Eric Mill <konklone@gmail.com>
+ */
+
 import com.squareup.okhttp.OkHttpClient;
 
 import java.net.URL;
@@ -7,11 +19,6 @@ import java.security.GeneralSecurityException;
 
 import javax.net.ssl.SSLContext;
 
-/**
- * Singleton class to manage HTTP interaction between OkHttp and HttpUrlConnection.
- *
- * Copyright (c) Eric Mill <konklone@gmail.com>, 2014, BSD-3
- */
 public class HttpManager {
 
     public static boolean initialized = false;

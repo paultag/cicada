@@ -1,16 +1,18 @@
 package org.opencivicdata.android.opencivicdata.models;
 
-import java.util.ArrayList;
-
-/**
+/*
  * This file is a part of Open Civic Data.
- * <p/>
- * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions of the BSD-3 license in
- * the LICENSE file contained in this source distribution.
- * <p/>
+ *
+ * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions
+ * of the BSD-3 license in the LICENSE file contained in this source
+ * distribution.
+ *
  * Contributors:
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
+
+import java.util.ArrayList;
+
 public class Organization {
     protected String openCivicId;
     protected String name;

@@ -1,5 +1,16 @@
 package org.opencivicdata.android.opencivicdata.dao.api;
 
+/*
+ * This file is a part of Open Civic Data.
+ *
+ * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions
+ * of the BSD-3 license in the LICENSE file contained in this source
+ * distribution.
+ *
+ * Contributors:
+ * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
+ */
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -8,19 +19,9 @@ import org.opencivicdata.android.opencivicdata.exceptions.OpenCivicDataRetrieval
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-/**
- * This file is a part of Open Civic Data.
- * <p/>
- * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions of the BSD-3 license in
- * the LICENSE file contained in this source distribution.
- * <p/>
- * Contributors:
- * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
- */
 public abstract class GenericAPIPaginatedList<E> extends APIBase implements PaginatedList<E> {
 
     protected String method;

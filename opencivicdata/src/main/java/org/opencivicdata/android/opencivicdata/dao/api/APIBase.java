@@ -1,5 +1,16 @@
 package org.opencivicdata.android.opencivicdata.dao.api;
 
+/*
+ * This file is a part of Open Civic Data.
+ *
+ * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions
+ * of the BSD-3 license in the LICENSE file contained in this source
+ * distribution.
+ *
+ * Contributors:
+ * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
+ */
+
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.util.Log;
@@ -20,15 +31,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
 
-/**
- * This file is a part of Open Civic Data.
- * <p/>
- * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions of the BSD-3 license in
- * the LICENSE file contained in this source distribution.
- * <p/>
- * Contributors:
- * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
- */
 public class APIBase {
     private static final String TAG = APIBase.class.getName();
 

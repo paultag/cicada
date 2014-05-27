@@ -1,5 +1,16 @@
 package org.opencivicdata.android.opencivicdata.support;
 
+/*
+ * This file is a part of Open Civic Data.
+ *
+ * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions
+ * of the BSD-3 license in the LICENSE file contained in this source
+ * distribution.
+ *
+ * Contributors:
+ * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
+ */
+
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ProgressBar;
@@ -7,16 +18,6 @@ import android.widget.ProgressBar;
 import org.opencivicdata.android.opencivicdata.adaptors.GenericListAdaptor;
 import org.opencivicdata.android.opencivicdata.dao.PaginatedList;
 import org.opencivicdata.android.opencivicdata.tasks.GenericListPopulator;
-
-/**
- * This file is a part of Open Civic Data.
- * <p/>
- * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions of the BSD-3 license in
- * the LICENSE file contained in this source distribution.
- * <p/>
- * Contributors:
- * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
- */
 
 public class GenericListScrollManager<E> implements AbsListView.OnScrollListener {
     PaginatedList<E> paginatedList;
