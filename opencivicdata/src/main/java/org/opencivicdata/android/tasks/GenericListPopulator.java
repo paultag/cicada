@@ -22,6 +22,16 @@ import org.opencivicdata.android.exceptions.OpenCivicDataRetrievalException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * The GenericListPopulator is an AsyncTask that takes a PaginatedList in,
+ * consumes it (in an often expensive over-the-line way), and returns
+ * back the resultant iterator.
+ *
+ * This class also handles letting the GenericListScrollManager about
+ * our loading state, which can keep our UI up-to-date.
+ *
+ * @param <E> Type of PaginatedList and ScrollManager we're dealing with.
+ */
 public class GenericListPopulator<E> extends AsyncTask<PaginatedList<E>, Void, Iterator<E>> {
     private static final String TAG = GenericListPopulator.class.getName();
 

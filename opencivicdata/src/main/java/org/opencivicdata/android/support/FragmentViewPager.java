@@ -17,7 +17,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 
-
+/**
+ * Simple Fragment wrapper. Not much here. Move along, folks.
+ */
 public class FragmentViewPager extends FragmentPagerAdapter {
 	protected ArrayList<Fragment> fragments;
 

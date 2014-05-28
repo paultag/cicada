@@ -19,6 +19,9 @@ import java.security.GeneralSecurityException;
 
 import javax.net.ssl.SSLContext;
 
+/**
+ * Shim in OK HTTP into the runtime.
+ */
 public class HttpManager {
 
     public static boolean initialized = false;

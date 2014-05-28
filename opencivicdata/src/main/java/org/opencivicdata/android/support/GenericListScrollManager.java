@@ -19,6 +19,13 @@ import org.opencivicdata.android.adaptors.GenericListAdaptor;
 import org.opencivicdata.android.dao.PaginatedList;
 import org.opencivicdata.android.tasks.GenericListPopulator;
 
+/**
+ * The GenericListScrollManager ensures that a list will continue to consume
+ * objects of Type <E> from a PaginatedList as the user scrolls to the
+ * bottom of the view.
+ *
+ * @param <E> Type of object contained in the list.
+ */
 public class GenericListScrollManager<E> implements AbsListView.OnScrollListener {
     PaginatedList<E> paginatedList;
     GenericListAdaptor<E> genericListAdaptor;
@@ -52,6 +59,19 @@ public class GenericListScrollManager<E> implements AbsListView.OnScrollListener
     @Override
     public void onScrollStateChanged(AbsListView absListView, int i) {}
 
+    /**
+     * Handle scroll events.
+     *
+     * We use a hard-coded value for elements from the bottom before loading
+     * in the onScroll method. Commonly, we want to load more data before
+     * the user gets there, which is why we have a multiplier against the
+     * visibleCount.
+
+     * @param absListView ListView to observe.
+     * @param firstVisible Integer of the First visible row.
+     * @param visibleCount Integer of the number of rows visible.
+     * @param totalCount Total number of rows.
+     */
     @Override
     public void onScroll(
             AbsListView absListView,
@@ -60,9 +80,11 @@ public class GenericListScrollManager<E> implements AbsListView.OnScrollListener
             int totalCount
     ) {
         if (this.loading) {
+            /* Short circut if we don't need to do work */
             return;
         }
 
+        /* Load fresh data when we're 1.5 screens from the bottom. */
         if (((firstVisible + visibleCount) + (1.5 * visibleCount)) >= totalCount) {
             this.doLoad();
         }

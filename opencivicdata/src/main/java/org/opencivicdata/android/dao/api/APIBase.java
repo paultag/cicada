@@ -72,6 +72,16 @@ public class APIBase {
         return this.getJSONObject(this.getUrlFor(method, fields, params));
     }
 
+    /**
+     * Get a URL for the requested query.
+     *
+     * @param method Method to invoke, something like '/people',
+     *               '/organizations', or '/jurisdictions'
+     * @param fields Fields to request. May be null.
+     * @param params Key/Value store of URL GET arguments.
+     * @return String representing the URL matching the query.
+     * @throws UnsupportedEncodingException if your encoding sucks.
+     */
     protected String getUrlFor(
             String method,
             String[] fields,
@@ -100,11 +110,26 @@ public class APIBase {
         return APIBase.host + "/" + method + "/" + stringBuilder.toString();
     }
 
+    /**
+     * Get a JSONObject for a given API URL.
+     *
+     * @param url URL to fetch
+     * @return JSONObject that matches the URL
+     * @throws IOException
+     * @throws JSONException
+     */
     protected JSONObject getJSONObject(String url) throws IOException, JSONException {
         Log.d(this.TAG, "Loading JSON Object: " + url);
         return new JSONObject(this.fetchJSON(url));
     }
 
+    /**
+     * Fetch the JSON (in String format) for a given URL.
+     *
+     * @param requestedUrl URL to fetch
+     * @return String of JSON data
+     * @throws IOException
+     */
     protected String fetchJSON(String requestedUrl) throws IOException {
         Log.d(this.TAG, "Hitting URL " + requestedUrl);
         URL url = new URL(requestedUrl);

@@ -19,6 +19,12 @@ import android.support.v7.app.ActionBarActivity;
 
 import org.opencivicdata.android.R;
 
+/**
+ * TabbedActionBarActivity is a superclass for any Actions which are
+ * composed of Tabbed views of Fragments.
+ *
+ * Subclasses override the addTabs method to populate the Activity.
+ */
 public abstract class TabbedActionBarActivity extends ActionBarActivity {
 
 	protected GenericTabListener genericTabListener;
@@ -26,10 +32,20 @@ public abstract class TabbedActionBarActivity extends ActionBarActivity {
 	protected ActionBar actionBar;
 
 	/**
-	 *
+	 * Add Tabs to the Activity. This should be overridden in any subclasses.
+     *
+     * It's very common to call `this.addTab(fragment, tabName);` in this
+     * method repeatedly.
 	 */
 	public abstract void addTabs();
 
+    /**
+     * Add a tab to the activity that's filled with a Fragment
+     * `fragment`, labeled by tabName.
+     *
+     * @param fragment Fragment to populate the Activity with.
+     * @param tabName Label for the Tab.
+     */
 	protected void addTab(Fragment fragment, String tabName) {
 		if (
 			this.fragmentViewPager == null ||

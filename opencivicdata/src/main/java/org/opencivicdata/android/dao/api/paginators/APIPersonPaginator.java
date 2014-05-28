@@ -19,11 +19,26 @@ import org.opencivicdata.android.models.Person;
 
 import java.util.Map;
 
+/**
+ * Paginator implementation for the Open Civic Data API.
+ *
+ * This lets the UI properly handle lists of unknown or extremely long length,
+ * allowing for loading of data progressively.
+ *
+ * This is for pages of People.
+ */
 public class APIPersonPaginator extends GenericAPIPaginatedList<Person> {
+
     public APIPersonPaginator(String method, String[] fields, Map<String, String> params) {
         super(method, fields, params);
     }
 
+    /**
+     * Turn a JSON blob into a Person object.
+     *
+     * @param input input JSON blob
+     * @return Person object from the JSON data
+     */
     @Override
     protected Person handleObject(JSONObject input) {
         try {

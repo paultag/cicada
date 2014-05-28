@@ -22,7 +22,7 @@ import org.opencivicdata.android.R;
 import org.opencivicdata.android.models.Organization;
 
 /**
- * OrganizationAdaptor
+ * OrganizationAdaptor shims in Organization objects into a GenericListAdaptor.
  */
 public class OrganizationAdaptor extends GenericListAdaptor<Organization> {
 

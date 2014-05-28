@@ -30,6 +30,8 @@ import java.util.Map;
  */
 public class OrganizationAPIDAO extends APIBase implements OrganizationDAO {
 
+    private static final String TAG = APIBase.class.getName();
+
     /**
      * Internal implementation detail for how we turn a JSON API response
      * into an Organization.
@@ -52,10 +54,10 @@ public class OrganizationAPIDAO extends APIBase implements OrganizationDAO {
             jsonOrganization = this.getObjectFor(openCivicDataId, null, null);
             return OrganizationAPIDAO.createOrganization(jsonOrganization);
         } catch (IOException e) {
-            Log.w("PAUL", e.toString());
+            Log.w(this.TAG, e.toString());
             return null;
         } catch (JSONException e) {
-            Log.w("PAUL", e.toString());
+            Log.w(this.TAG, e.toString());
             return null;
         }
     }

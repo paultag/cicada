@@ -25,7 +25,7 @@ import org.opencivicdata.android.R;
 import org.opencivicdata.android.models.Person;
 
 /**
- * PersonAdaptor
+ * PersonAdaptor shims in Person objects into a GenericListAdaptor.
  */
 public class PersonAdaptor extends GenericListAdaptor<Person> {
 

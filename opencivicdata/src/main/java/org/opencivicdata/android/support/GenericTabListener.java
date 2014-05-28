@@ -17,7 +17,10 @@ import android.support.v7.app.ActionBar;
 
 
 /**
- * GenericTabListener
+ * GenericTabListener watches for events on a Tabbed activity
+ * and changes the state of the ViewPager to match. This class is
+ * composed by the TabbedActionBarActivity to handle it's events
+ * automagically.
  */
 public class GenericTabListener implements ActionBar.TabListener {
 
@@ -29,6 +32,8 @@ public class GenericTabListener implements ActionBar.TabListener {
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+        /* When we see that we've got a tab click, we'll
+         * change up the ViewPager to match. */
         this.viewPager.setCurrentItem(tab.getPosition());
     }
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {}
