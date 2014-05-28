@@ -1,4 +1,4 @@
-package org.opencivicdata.android.dao.api;
+package org.opencivicdata.android.dao.api.paginators;
 
 /*
  * This file is a part of Open Civic Data.
@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.opencivicdata.android.dao.PaginatedList;
+import org.opencivicdata.android.dao.api.APIBase;
 import org.opencivicdata.android.exceptions.OpenCivicDataRetrievalException;
 
 import java.io.IOException;

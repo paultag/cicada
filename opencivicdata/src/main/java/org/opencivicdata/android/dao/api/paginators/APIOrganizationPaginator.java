@@ -13,7 +13,6 @@ package org.opencivicdata.android.dao.api.paginators;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.opencivicdata.android.dao.api.GenericAPIPaginatedList;
 import org.opencivicdata.android.dao.api.OrganizationAPIDAO;
 import org.opencivicdata.android.exceptions.OpenCivicDataRetrievalException;
 import org.opencivicdata.android.models.Organization;
