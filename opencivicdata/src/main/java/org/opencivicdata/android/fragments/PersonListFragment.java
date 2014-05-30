@@ -30,9 +30,6 @@ import org.opencivicdata.android.models.Person;
 /**
  * OrganizationListFragment is the simple fragment to handle listing Organizations. Yes,
  * I know that's entirely unhelpful, but that's what it does, and that's how it does it.
- *
- * Bundle arguments I know about:
- *   - (none)
  */
 public class PersonListFragment extends Fragment {
     @Override

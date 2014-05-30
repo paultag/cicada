@@ -31,9 +31,6 @@ import org.opencivicdata.android.models.Organization;
 /**
  * OrganizationListFragment is the simple fragment to handle listing Organizations. Yes,
  * I know that's entirely unhelpful, but that's what it does, and that's how it does it.
- *
- * Bundle arguments I know about:
- *   - (none)
  */
 public class OrganizationListFragment extends Fragment {
 
@@ -52,7 +49,8 @@ public class OrganizationListFragment extends Fragment {
 
         OrganizationDAO organizationDAO = new OrganizationAPIDAO();
         PaginatedList<Organization> paginatedList = organizationDAO.getOrganizationsByJurisdiction(
-                "ocd-jurisdiction/country:us/state:ma/legislature");
+                "ocd-jurisdiction/country:us/state:ma/legislature"
+        );
 
         GenericListScrollManager<Organization> genericListScrollManager = new GenericListScrollManager<Organization>(
                 organizationAdaptor,

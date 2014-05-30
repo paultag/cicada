@@ -55,7 +55,6 @@ public class GenericListPopulator<E> extends AsyncTask<PaginatedList<E>, Void, I
         ArrayList<E> returnData = new ArrayList<E>();
 
         for (PaginatedList<E> result : results) {
-
             if (result.hasNextPage()) {
                 Iterator<E> x = result.getNextPage();
                 while (x.hasNext()) {
