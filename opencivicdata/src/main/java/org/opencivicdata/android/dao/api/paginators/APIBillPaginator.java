@@ -38,7 +38,7 @@ public class APIBillPaginator extends GenericAPIPaginatedList<Bill> {
             return BillAPIDAO.createBill(input);
         } catch (JSONException e) {
             throw new OpenCivicDataRetrievalException(
-                    "Can't hydrate Person: " + e.getMessage());
+                    "Can't hydrate Bill: " + e.getMessage());
         }
     }
 }
