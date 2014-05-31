@@ -11,6 +11,11 @@ package org.opencivicdata.android.models;
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
 
+/**
+ * Open Civic Data representation of a Person
+ *
+ * http://docs.opencivicdata.org/en/latest/data/person.html
+ */
 public class Person {
     protected String openCivicId;
     protected String name;

@@ -13,6 +13,11 @@ package org.opencivicdata.android.models;
 
 import java.util.ArrayList;
 
+/**
+ * Open Civic Data representation of a Organization
+ *
+ * http://docs.opencivicdata.org/en/latest/data/organization.html
+ */
 public class Organization {
     protected String openCivicId;
     protected String name;

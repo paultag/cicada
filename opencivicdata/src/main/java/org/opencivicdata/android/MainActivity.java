@@ -12,6 +12,7 @@ package org.opencivicdata.android;
  */
 
 import org.opencivicdata.android.dao.api.APIBase;
+import org.opencivicdata.android.fragments.BillListFragment;
 import org.opencivicdata.android.fragments.OrganizationListFragment;
 import org.opencivicdata.android.fragments.PersonListFragment;
 import org.opencivicdata.android.support.TabbedActionBarActivity;
@@ -29,6 +30,7 @@ public class MainActivity extends TabbedActionBarActivity {
 
         this.addTab(new PersonListFragment(), "People");
 		this.addTab(new OrganizationListFragment(), "Organizations");
+        this.addTab(new BillListFragment(), "Bills");
 		this.addTab(new PersonListFragment(), "People Two");
 	}
 }
