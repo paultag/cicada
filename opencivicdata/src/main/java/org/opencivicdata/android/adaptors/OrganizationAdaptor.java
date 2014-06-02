@@ -46,6 +46,8 @@ public class OrganizationAdaptor extends GenericListAdaptor<Organization> {
         TextView name = (TextView) layout.findViewById(R.id.organization_item_name);
         name.setText(organization.getName());
 
+        layout.setTag(organization.getId());
+
         return layout;
     }
 }

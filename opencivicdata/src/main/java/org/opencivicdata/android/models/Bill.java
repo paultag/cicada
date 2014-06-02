@@ -22,6 +22,15 @@ public class Bill {
     protected String name;
     protected String title;
     protected String type;
+    protected String openCivicDataId;
+
+    public String getId() {
+        return openCivicDataId;
+    }
+
+    public void setId(String openCivicDataId) {
+        this.openCivicDataId = openCivicDataId;
+    }
 
     public Organization getOrganization() {
         return organization;

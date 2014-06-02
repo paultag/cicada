@@ -21,10 +21,10 @@ public class Person {
     protected String name;
     protected String image;
 
-    public String getOpenCivicId() {
+    public String getId() {
         return openCivicId;
     }
-    public void setOpenCivicId(String openCivicId) {
+    public void setId(String openCivicId) {
         this.openCivicId = openCivicId;
     }
     public String getName() {

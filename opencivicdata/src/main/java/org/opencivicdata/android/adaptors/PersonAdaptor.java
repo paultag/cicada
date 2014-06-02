@@ -55,6 +55,8 @@ public class PersonAdaptor extends GenericListAdaptor<Person> {
                 .error(R.drawable.placeholder)
                 .into(imageView);
 
+        layout.setTag(person.getId());
+
         return layout;
     }
 }

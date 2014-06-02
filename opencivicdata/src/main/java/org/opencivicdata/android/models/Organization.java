@@ -23,11 +23,11 @@ public class Organization {
     protected String name;
     protected ArrayList<Person> members;
 
-    public String getOpenCivicId() {
+    public String getId() {
         return openCivicId;
     }
 
-    public void setOpenCivicId(String openCivicId) {
+    public void setId(String openCivicId) {
         this.openCivicId = openCivicId;
     }
 

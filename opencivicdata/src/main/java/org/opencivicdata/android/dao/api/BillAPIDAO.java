@@ -11,6 +11,8 @@ package org.opencivicdata.android.dao.api;
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.opencivicdata.android.dao.BillDAO;
@@ -31,12 +33,13 @@ public class BillAPIDAO extends APIBase implements BillDAO {
         Bill bill = new Bill();
         bill.setName(jsonBill.getString("name"));
         bill.setTitle(jsonBill.getString("title"));
+        bill.setId(jsonBill.getString("id"));
         return bill;
     }
 
     @Override
     public Bill getBillByOpenCivicDataID(String openCivicDataId) {
-        JSONObject jsonPerson = null;
+        JSONObject jsonPerson;
         try {
             jsonPerson = this.getObjectFor(openCivicDataId, null, null);
             return BillAPIDAO.createBill(jsonPerson);

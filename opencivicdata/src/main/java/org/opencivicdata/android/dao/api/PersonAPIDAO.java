@@ -38,7 +38,7 @@ public class PersonAPIDAO extends APIBase implements PersonDAO {
      */
     public static Person createPerson(JSONObject jsonPerson) throws JSONException {
         Person person = new Person();
-        person.setOpenCivicId(jsonPerson.getString("id"));
+        person.setId(jsonPerson.getString("id"));
         person.setName(jsonPerson.getString("name"));
         person.setImage(jsonPerson.optString("image", null));
         return person;

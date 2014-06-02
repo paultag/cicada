@@ -42,7 +42,7 @@ public class OrganizationAPIDAO extends APIBase implements OrganizationDAO {
      */
     public static Organization createOrganization(JSONObject jsonOrganization) throws JSONException {
         Organization organization = new Organization();
-        organization.setOpenCivicId(jsonOrganization.getString("id"));
+        organization.setId(jsonOrganization.getString("id"));
         organization.setName(jsonOrganization.getString("name"));
         return organization;
     }

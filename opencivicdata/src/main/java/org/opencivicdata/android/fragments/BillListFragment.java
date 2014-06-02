@@ -11,15 +11,20 @@ package org.opencivicdata.android.fragments;
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import org.opencivicdata.android.BillDetailActivity;
 import org.opencivicdata.android.R;
 import org.opencivicdata.android.adaptors.BillAdaptor;
 import org.opencivicdata.android.adaptors.OrganizationAdaptor;
@@ -37,6 +42,24 @@ import org.opencivicdata.android.support.GenericListScrollManager;
  * I know that's entirely unhelpful, but that's what it does, and that's how it does it.
  */
 public class BillListFragment extends Fragment {
+
+    protected class BillListOnClickListener implements AdapterView.OnItemClickListener {
+
+        protected Fragment fragment;
+
+        BillListOnClickListener(Fragment fragment) {
+            this.fragment = fragment;
+        }
+
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Bill bill = (Bill) adapterView.getItemAtPosition(i);
+            Log.i("FOO", bill.getId());
+            Intent intent = new Intent(this.fragment.getActivity(), BillDetailActivity.class);
+            intent.putExtra(BillDetailActivity.OPEN_CIVIC_DATA_ID, bill.getId());
+            startActivity(intent);
+        }
+    }
 
     @Override
     public View onCreateView(
@@ -60,6 +83,7 @@ public class BillListFragment extends Fragment {
         );
         genericListScrollManager.setProgressBar(pb);
         lv.setOnScrollListener(genericListScrollManager);
+        lv.setOnItemClickListener(new BillListOnClickListener(this));
 
         return linearLayout;
     }

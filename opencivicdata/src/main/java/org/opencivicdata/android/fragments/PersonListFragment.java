@@ -16,6 +16,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -32,6 +33,7 @@ import org.opencivicdata.android.models.Person;
  * I know that's entirely unhelpful, but that's what it does, and that's how it does it.
  */
 public class PersonListFragment extends Fragment {
+
     @Override
     public View onCreateView(
             LayoutInflater inflater,

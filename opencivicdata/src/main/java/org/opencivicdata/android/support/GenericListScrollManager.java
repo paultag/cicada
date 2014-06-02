@@ -13,6 +13,7 @@ package org.opencivicdata.android.support;
 
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ProgressBar;
 
 import org.opencivicdata.android.adaptors.GenericListAdaptor;
@@ -26,7 +27,7 @@ import org.opencivicdata.android.tasks.GenericListPopulator;
  *
  * @param <E> Type of object contained in the list.
  */
-public class GenericListScrollManager<E> implements AbsListView.OnScrollListener {
+public class GenericListScrollManager<E> implements AbsListView.OnScrollListener, AbsListView.OnClickListener {
     PaginatedList<E> paginatedList;
     GenericListAdaptor<E> genericListAdaptor;
     ProgressBar progressBar;
@@ -102,5 +103,10 @@ public class GenericListScrollManager<E> implements AbsListView.OnScrollListener
         if (this.progressBar != null) {
             this.progressBar.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+        view.getId();
     }
 }

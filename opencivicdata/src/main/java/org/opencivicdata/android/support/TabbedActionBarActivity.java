@@ -65,7 +65,7 @@ public abstract class TabbedActionBarActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.view_pager);
-		ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager_pager);
+		ViewPager viewPager = (ViewPager) this.findViewById(R.id.view_pager_pager);
 		/* OK. Basic stuff is here. Let's do the stuff we need to do now. */
 
 		/* Firstly, let's set up the Tab follower. */

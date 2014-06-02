@@ -42,6 +42,8 @@ public class BillAdaptor extends GenericListAdaptor<Bill> {
         TextView name = (TextView) layout.findViewById(R.id.bill_item_title);
         name.setText(bill.getTitle());
 
+        layout.setTag(bill.getId());
+
         return layout;
     }
 }
