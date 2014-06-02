@@ -1,5 +1,16 @@
 package org.opencivicdata.android.tasks;
 
+/*
+ * This file is a part of Open Civic Data.
+ *
+ * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions
+ * of the BSD-3 license in the LICENSE file contained in this source
+ * distribution.
+ *
+ * Contributors:
+ * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
+ */
+
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -10,7 +21,9 @@ import org.opencivicdata.android.dao.BillDAO;
 import org.opencivicdata.android.dao.api.BillAPIDAO;
 import org.opencivicdata.android.models.Bill;
 
-
+/**
+ *
+ */
 public class BillDetailActivityPopulator extends AsyncTask<String, Void, Bill> {
     Activity activity;
 

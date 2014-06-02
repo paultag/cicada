@@ -1,15 +1,25 @@
 package org.opencivicdata.android;
 
+/*
+ * This file is a part of Open Civic Data.
+ *
+ * Copyright (c) Sunlight Foundation, 2014 under the terms and conditions
+ * of the BSD-3 license in the LICENSE file contained in this source
+ * distribution.
+ *
+ * Contributors:
+ * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
+ */
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-
-import org.opencivicdata.android.dao.BillDAO;
-import org.opencivicdata.android.dao.api.BillAPIDAO;
-import org.opencivicdata.android.models.Bill;
 import org.opencivicdata.android.tasks.BillDetailActivityPopulator;
 
+/**
+ *
+ */
 public class BillDetailActivity extends Activity {
 
     public static final String OPEN_CIVIC_DATA_ID = "org.opencivicdata.android.BillDetailActivity.OPEN_CIVIC_DATA_ID";
