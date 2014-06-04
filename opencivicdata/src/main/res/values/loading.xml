@@ -4,6 +4,7 @@
         <item>Debating Legislation...</item>
         <item>Holding a hearing to discuss holding a hearing...</item>
         <item>Raising the Debt Ceiling...</item>
+        <item>Lowering the Debt Ceiling...</item>
         <item>Ensuring Checks and Balances...</item>
         <item>Appointing heads of State...</item>
         <item>Being recognized by the Chair...</item>
@@ -11,5 +12,12 @@
         <item>Extending Debate...</item>
         <item>Limiting Debate...</item>
         <item>Forming a Coalition...</item>
+        <item>Spending tax money...</item>
+        <item>Cutting the tax rate...</item>
+        <item>Running for office...</item>
+        <item>Accepting campaign donations...</item>
+        <item>Registering campaign donations with the FEC...</item>
+        <item>Spinning the Media...</item>
+        <item>Filibustering...</item>
     </array>
 </resources>
