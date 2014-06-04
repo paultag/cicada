@@ -42,6 +42,12 @@ public class BillDetailActivityPopulator extends AsyncTask<String, Void, Bill> {
     @Override
     protected void onPostExecute(Bill bill) {
         super.onPostExecute(bill);
+
+        if (bill == null) {
+            this.activity.setContentView(R.layout.error);
+            return;
+        }
+
         this.activity.setContentView(R.layout.bill_detail);
 
         TextView name = (TextView) this.activity.findViewById(R.id.bill_detail_name);

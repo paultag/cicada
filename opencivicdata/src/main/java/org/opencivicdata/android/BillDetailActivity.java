@@ -17,6 +17,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 import org.opencivicdata.android.tasks.BillDetailActivityPopulator;
 
+import java.util.Random;
+
 /**
  *
  */
@@ -34,6 +36,8 @@ public class BillDetailActivity extends Activity {
         billDetailActivityPopulator.execute(openCivicDataId);
 
         TextView textView = (TextView) this.findViewById(R.id.loading_text);
-        textView.setText("Waiting for the right radio waves...");
+        String[] loadingMessages = this.getResources().getStringArray(R.array.loading_messages);
+        String loadingMessage = loadingMessages[new Random().nextInt(loadingMessages.length)];
+        textView.setText(loadingMessage);
     }
 }
