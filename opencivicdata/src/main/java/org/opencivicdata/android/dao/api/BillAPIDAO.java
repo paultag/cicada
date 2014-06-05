@@ -11,23 +11,46 @@ package org.opencivicdata.android.dao.api;
  * - Paul R. Tagliamonte <paultag@sunlightfoundation.com>
  */
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.opencivicdata.android.dao.BillDAO;
 import org.opencivicdata.android.dao.PaginatedList;
-import org.opencivicdata.android.dao.api.paginators.APIBillPaginator;
+import org.opencivicdata.android.exceptions.OpenCivicDataRetrievalException;
 import org.opencivicdata.android.models.Bill;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  */
 public class BillAPIDAO extends APIBase implements BillDAO {
+
+    /**
+     * Paginator implementation for the Open Civic Data API.
+     *
+     * This lets the UI properly handle lists of unknown or extremely long length,
+     * allowing for loading of data progressively.
+     *
+     * This is for pages of Bills.
+     */
+    public class APIBillPaginator extends GenericAPIPaginatedList<Bill> {
+        public APIBillPaginator(String method, String[] fields, Map<String, String> params) {
+            super(method, fields, params);
+        }
+
+        @Override
+        protected Bill handleObject(JSONObject input) {
+            try {
+                return BillAPIDAO.createBill(input);
+            } catch (JSONException e) {
+                throw new OpenCivicDataRetrievalException(
+                        "Can't hydrate Bill: " + e.getMessage());
+            }
+        }
+    }
 
     public static Bill createBill(JSONObject jsonBill) throws JSONException {
         Bill bill = new Bill();

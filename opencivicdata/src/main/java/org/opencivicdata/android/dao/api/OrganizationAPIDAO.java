@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.opencivicdata.android.dao.OrganizationDAO;
 import org.opencivicdata.android.dao.PaginatedList;
-import org.opencivicdata.android.dao.api.paginators.APIOrganizationPaginator;
+import org.opencivicdata.android.exceptions.OpenCivicDataRetrievalException;
 import org.opencivicdata.android.models.Organization;
 
 import java.io.IOException;
@@ -29,8 +29,37 @@ import java.util.Map;
  * as the Data backend.
  */
 public class OrganizationAPIDAO extends APIBase implements OrganizationDAO {
-
     private static final String TAG = APIBase.class.getName();
+
+    /**
+     * Paginator implementation for the Open Civic Data API.
+     *
+     * This lets the UI properly handle lists of unknown or extremely long length,
+     * allowing for loading of data progressively.
+     *
+     * This is for pages of Organization.
+     */
+    public class APIOrganizationPaginator extends GenericAPIPaginatedList<Organization> {
+        public APIOrganizationPaginator(String method, String[] fields, Map<String, String> params) {
+            super(method, fields, params);
+        }
+
+        /**
+         * Turn a JSON blob into a Organization object.
+         *
+         * @param input input JSON blob
+         * @return Organization object from the JSON data
+         */
+        @Override
+        protected Organization handleObject(JSONObject input) {
+            try {
+                return OrganizationAPIDAO.createOrganization(input);
+            } catch (JSONException e) {
+                throw new OpenCivicDataRetrievalException(
+                        "Can't hydrate Organization: " + e.getMessage());
+            }
+        }
+    }
 
     /**
      * Internal implementation detail for how we turn a JSON API response

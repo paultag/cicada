@@ -1,4 +1,4 @@
-package org.opencivicdata.android.dao.api.paginators;
+package org.opencivicdata.android.dao.api;
 
 /*
  * This file is a part of Open Civic Data.
