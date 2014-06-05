@@ -41,7 +41,7 @@ import org.opencivicdata.android.support.GenericListScrollManager;
  * BillListFragment is the simple fragment to handle listing Bills. Yes,
  * I know that's entirely unhelpful, but that's what it does, and that's how it does it.
  */
-public class BillListFragment extends Fragment {
+public class BillPaginatedListFragment extends Fragment {
 
     protected class BillListOnClickListener implements AdapterView.OnItemClickListener {
 
@@ -54,7 +54,6 @@ public class BillListFragment extends Fragment {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Bill bill = (Bill) adapterView.getItemAtPosition(i);
-            Log.i("FOO", bill.getId());
             Intent intent = new Intent(this.fragment.getActivity(), BillDetailActivity.class);
             intent.putExtra(BillDetailActivity.OPEN_CIVIC_DATA_ID, bill.getId());
             startActivity(intent);

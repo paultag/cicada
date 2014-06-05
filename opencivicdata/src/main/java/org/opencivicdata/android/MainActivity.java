@@ -12,9 +12,9 @@ package org.opencivicdata.android;
  */
 
 import org.opencivicdata.android.dao.api.APIBase;
-import org.opencivicdata.android.fragments.BillListFragment;
-import org.opencivicdata.android.fragments.OrganizationListFragment;
-import org.opencivicdata.android.fragments.PersonListFragment;
+import org.opencivicdata.android.fragments.BillPaginatedListFragment;
+import org.opencivicdata.android.fragments.OrganizationPaginatedListFragment;
+import org.opencivicdata.android.fragments.PersonPaginatedListFragment;
 import org.opencivicdata.android.support.TabbedActionBarActivity;
 
 /**
@@ -28,9 +28,9 @@ public class MainActivity extends TabbedActionBarActivity {
         APIBase.setApiKey(this.getResources().getString(R.string.api_key));
         APIBase.setApiHost(this.getResources().getString(R.string.ocd_api_host));
 
-        this.addTab(new PersonListFragment(), "People");
-		this.addTab(new OrganizationListFragment(), "Organizations");
-        this.addTab(new BillListFragment(), "Bills");
-		this.addTab(new PersonListFragment(), "People Two");
+        this.addTab(new PersonPaginatedListFragment(), "People");
+		this.addTab(new OrganizationPaginatedListFragment(), "Organizations");
+        this.addTab(new BillPaginatedListFragment(), "Bills");
+		this.addTab(new PersonPaginatedListFragment(), "People Two");
 	}
 }
