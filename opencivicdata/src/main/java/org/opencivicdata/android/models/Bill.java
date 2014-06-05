@@ -28,7 +28,6 @@ public class Bill {
         public String getDescription() {
             return description;
         }
-
         public void setDescription(String description) {
             this.description = description;
         }
@@ -42,7 +41,6 @@ public class Bill {
     protected List<Action> actions;
 
     public List<Action> getActions() { return actions; }
-
     public void setActions(List<Action> actions) { this.actions = actions; }
 
     public void addAction(Action action) {
@@ -55,7 +53,6 @@ public class Bill {
     public String getId() {
         return openCivicDataId;
     }
-
     public void setId(String openCivicDataId) {
         this.openCivicDataId = openCivicDataId;
     }
@@ -63,7 +60,6 @@ public class Bill {
     public Organization getOrganization() {
         return organization;
     }
-
     public void setOrganization(Organization organization) {
         this.organization = organization;
     }
@@ -71,7 +67,6 @@ public class Bill {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -79,7 +74,6 @@ public class Bill {
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -87,7 +81,6 @@ public class Bill {
     public String getType() {
         return type;
     }
-
     public void setType(String type) {
         this.type = type;
     }

@@ -27,12 +27,14 @@ public class Person {
     public void setId(String openCivicId) {
         this.openCivicId = openCivicId;
     }
+
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
+
     public String getImage() {
         return image;
     }

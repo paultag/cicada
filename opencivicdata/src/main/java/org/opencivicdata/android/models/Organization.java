@@ -26,7 +26,6 @@ public class Organization {
     public String getId() {
         return openCivicId;
     }
-
     public void setId(String openCivicId) {
         this.openCivicId = openCivicId;
     }
@@ -34,7 +33,6 @@ public class Organization {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -42,7 +40,6 @@ public class Organization {
     public ArrayList<Person> getMembers() {
         return members;
     }
-
     public void setMembers(ArrayList<Person> members) {
         this.members = members;
     }
