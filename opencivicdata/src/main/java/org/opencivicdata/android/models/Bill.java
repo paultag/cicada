@@ -12,17 +12,45 @@ package org.opencivicdata.android.models;
  */
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Open Civic Data representation of a Bill
  *
  * http://docs.opencivicdata.org/en/latest/data/bill.html
  */
 public class Bill {
+
+    public static class Action {
+        protected String description;
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+    }
+
     protected Organization organization;
     protected String name;
     protected String title;
     protected String type;
     protected String openCivicDataId;
+    protected List<Action> actions;
+
+    public List<Action> getActions() { return actions; }
+
+    public void setActions(List<Action> actions) { this.actions = actions; }
+
+    public void addAction(Action action) {
+        if (this.actions == null) {
+            this.actions = new ArrayList<Action>();
+        }
+        this.actions.add(action);
+    }
 
     public String getId() {
         return openCivicDataId;
